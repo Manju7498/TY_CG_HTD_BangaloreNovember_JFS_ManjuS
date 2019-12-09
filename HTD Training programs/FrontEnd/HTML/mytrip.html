@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mytrip</title>
+    <link rel="stylesheet" href="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <style>
+      .h {
+        display: inline;
+        padding: 70px;
+      }
+      .aa , .bb , .cc , .dd , .ee , .ff {
+        padding: 15px;
+      }
+      body {
+        background-image: url('F:/test bootstrap/bg1.jpg');
+      }
+    </style>
+</head>
+<body>
+    <script src="./bootstrap-4.3.1-dist/jquery.js"></script>
+    <script src="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                <a class="navbar-brand" href="#">My Trip</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Transport
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Bus</a>
+                        <a class="dropdown-item" href="#">Train</a>
+                        <a class="dropdown-item" href="#">Flight</a>
+                        <a class="dropdown-item" href="#">Mini Traveller</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Places
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">Palmaner</a>
+                              <a class="dropdown-item" href="#">Madhurai</a>
+                              <a class="dropdown-item" href="#">Bangalore</a>
+                              <a class="dropdown-item" href="#">Chennai</a>
+                            </div>
+                          </li>
+                  </ul>
+                  <span class="navbar-text">
+                        <a class="nav-link" href="logintrip.html" target="_blank">Login <span class="sr-only">(current)</span></a>
+                      </span>
+                      <span class="navbar-text">
+                            <a class="nav-link" href="registertrip.html" target="_blank">Register <span class="sr-only">(current)</span></a>
+                          </span>
+                  
+                </div>
+              </nav>
+              <header>
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="./bg1.jpg" height="400" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="./bg2.jpg" height="400" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="./bg3.jpg" height="400" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                    <img src="./c4.jpg" height="400" class="d-block w-100" alt="...">
+                                  </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+              </header>
+              <section>
+                       <div class="class" style="background-color: blanchedalmond;">
+                        <div class="container" style="background-color: blanchedalmond;" >
+                                <div class="row">
+                                      <div class="col-sm-4 ">
+                                          <div class="card" style="width: 18rem;">
+                                                  <img src="./agra.jpg" height="300" width="300" class="card-img-top" alt="...">
+                                                  <div class="card-body">
+                                                    <h3 class="card-title text-center">Agra</h3>
+                                                    <div>
+                                                        <center>
+                                                              <a href="#" class="btn btn-primary btn-lg">Explore Agra</a>
+                                                        </center> 
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="card" style="width: 18rem;">
+                                                    <img src="./ban.jpg" height="300" width="300"  class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                      <h3 class="card-title text-center">Bangalore</h3>
+                                                      <div>
+                                                          <center>
+                                                                <a href="#" class="btn btn-primary btn-lg">Explore Bangalore</a>
+                                                          </center>
+                                                      </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                          <div class="col-sm-4">
+                                              <div class="card" style="width: 18rem;">
+                                                      <img src="./charminar.jpg" height="300" width="300" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                        <h3 class="card-title text-center">Hyderabad</h3>
+                                                        <div>
+                                                            <center>
+                                                                  <a href="#" class="btn btn-primary btn-lg">Explore Hyderabad</a>
+                                                            </center>
+                                                        </div>
+                                                      </div>
+                                              </div>
+                                           </div>
+                                                <div class="col-sm-4">
+                                                    <div class="card" style="width: 18rem;">
+                                                            <img src="./chennai.jpg" height="300" width="300" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                              <h3 class="card-title text-center">Chennai</h3>
+                                                              <div>
+                                                                  <center>
+                                                                        <a href="#" class="btn btn-primary btn-lg">Explore Chennai</a>
+                                                                  </center>
+                                                              </div>                                                            
+                                                            </div>                                          
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="card" style="width: 18rem;">
+                                                          <img src="./delhi.jpg" height="300" width="300" class="card-img-top" alt="...">
+                                                          <div class="card-body">
+                                                            <h3 class="card-title text-center">Delhi</h3>
+                                                            <div>
+                                                                <center>
+                                                                      <a href="#" class="btn btn-primary btn-lg">Explore Delhi</a>
+                                                                </center>
+                                                            </div>                                                            
+                                                          </div>                                          
+                                                  </div>
+                                              </div>    
+                                                                                                                               
+                                                      <div class="col-sm-4">
+                                                          <div class="card" style="width: 18rem;">
+                                                                  <img src="./mumbai.jpg" height="300" width="300" class="card-img-top" alt="...">
+                                                                  <div class="card-body">
+                                                                    <h3 class="card-title text-center">Mumbai</h3>
+                                                                    <div>
+                                                                        <center>
+                                                                              <a href="#" class="btn btn-primary btn-lg">Explore Mumbai</a>
+                                                                        </center>
+                                                                    </div>                                                                   
+                                                                  </div>
+                                                          </div>
+                                                       </div>
+                                          </div>
+                                   </div>   
+                                   </div> 
+                                  </div>      
+              </section>
+              <section>
+                <div class="card" style="background-color: blanchedalmond;">
+                    <div class="row">
+                            <div class="col-sm-6">
+                              <div class="card bg-danger">
+                                <div class="card-body">
+                                  <h3 class="card-title text-center">Birla Temple</h3>
+                                  <p class="card-text">Birla Mandir (Birla Temple) refers to different Hindu temples or Mandirs built by the 
+                                      Birla family, in different cities. All these temples are magnificently built, some of them in white marble or in sandstone.
+                                       The temples are generally located in a prominent location, carefully designed to accommodate a large number of visitors.
+                                        The worship and discourses are well organized. The first one was built in 1939 in Delhi collectively by Ghanshyamdas Birla and his brothers, as well his father. 
+                                      Later temples have been built by, and are managed by different branches of the family.</p>
+                                  <a href="#" class="btn btn-primary btn-lg">Click for 50% Discount</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="card bg-danger">
+                                <div class="card-body">
+                                  <h3 class="card-title text-center">KanyaKumari</h3>
+                                  <p class="card-text">Kanyakumari (distorted to Cape Comorin by colonialists) is a city of the Kanyakumari 
+                                      district in the Indian State of Tamil Nadu. It is the southernmost city of peninsular/contiguous India. Kanyakumari has
+                                       been a city since the Sangam period.[1][2] and is a popular tourist destination.The place derives its name from the 
+                                       goddess Devi Kanya Kumari, considered to be the sister of Krishna, a goddess is believed to remove the
+                                        rigidity from the mind, to whom women pray for marriage. In 1656, the Dutch East India company conquered Portuguese
+                                         Ceylon from the Portuguese, 
+                                       </p>
+                                  <a href="#" class="btn btn-primary btn-lg">Click here for 70% discount</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+              </section>
+              <section>
+                <div class="card" style="background-color: blanchedalmond;">
+                  <div class="container">
+                    <div class="row">
+                  <div class="aa">
+                      <div class="card mb-4 bg-warning" style="max-width: 540px;">
+                          <div class="row no-gutters">
+                              <div class="col-md-4">
+                                    <img src="./museum.jpg"  style="border-radius: 50%;" class="card-img"  alt="...">
+                              </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title text-center">Museum</h5>
+                              <p class="card-text">A museum (/mjuːˈziːəm/ mew-ZEE-əm; plural museums or, rarely, musea) is an institution
+                                 that cares for (conserves) a collection of artifacts and other objects of artistic, cultural.</p>                   
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                        
+                
+                  <div class="bb">
+                      <div class="card mb-4 bg-warning" style="max-width: 540px;">
+                          <div class="row no-gutters">
+                            <div class="col-md-4">
+                              <img src="./parks.jpg"  style="border-radius: 50%;" class="card-img "  alt="...">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Parks</h5>
+                                <p class="card-text">A park is an area of natural, semi-natural or planted space set aside for human enjoyment and 
+                                  recreation or for the protection of wildlife or natural habitats. </p>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+          
+                  </div>
+                        
+                    <div class="cc">
+                        <div class="card mb-4 bg-success" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                              <div class="col-md-4">
+                                <img src="./skydiving.jpg"  style="border-radius: 50%;" class="card-img"  alt="...">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title text-center">Sky Diving</h5>
+                                  <p class="card-text">Skydiving is parachuting from an airplane for fun. Skydiving can be done individually and with groups 
+                                    of people. Training is required for most of the paratroopers. </p>
+                                 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                      <div class="dd">
+                          <div class="card mb-4 bg-success" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                                <div class="col-md-4">
+                                  <img src="./zoo.jpg" style="border-radius: 50%;" class="card-img"  alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title text-center">Zoo</h5>
+                                    <p class="card-text">A Zoo (also called an animal park or menagerie) is a facility in which all animals are housed within enclosures, displayed to the public, and in which they may also breed.</p>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                        <div class="ee">
+                            <div class="card mb-4 bg-primary" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                  <div class="col-md-4">
+                                    <img src="./shopping.jpg" style="border-radius: 50%;" class="card-img"  alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title text-center">Shopping</h5>
+                                      <p class="card-text">Shopping is an activity in which a customer browses the available goods or services presented by one or more retailers with the potential intent to purchase a suitable selection of them.</p>
+                              
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                          <div class="ff">
+                              <div class="card mb-4 bg-primary" style="max-width: 540px;">
+                                  <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <img src="./beach.jpg" style="border-radius: 50%;" class="card-img"  alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title text-center">Beach</h5>
+                                        <p class="card-text">A beach is a landform alongside a body of water which consists of loose particles. 
+                                          The particles composing a beach are typically made from rock, such as sand, gravel, shingle, pebbles.</p>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                          </div>
+                            
+                    </div>
+                  </div>   
+              </section>
+              <footer>
+                <div class="card" style="font-size:30px; background-color: blanchedalmond;">
+                  <div class="container">
+                    <div class="h">
+                    <a href="https://www.facebook.com">Facebook</a>
+                    <a href="https://www.twitter.com">Twitter</a>
+                    </div>
+                    </div>
+                </div>
+              </footer>
+</body>
+</html>

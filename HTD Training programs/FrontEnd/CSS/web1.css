@@ -1,0 +1,37 @@
+.e ul li {
+    padding: 20px;
+    display: inline-block;
+    list-style: none; 
+    float: left;
+    text-decoration: none;
+}
+.r ol li {
+    padding: 20px;
+    display: inline-block;
+    list-style: none;
+    float: right;
+}
+a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+img {
+    border-radius: 50%;
+}
+table{
+    padding: 60px;
+    border: rosybrown solid 5px;
+    margin: 90px;
+}
+.f {
+    padding: 30px;
+}
+.h {
+    text-decoration: underline;
+}
+.j {
+    word-spacing: 10px;
+}
+
+

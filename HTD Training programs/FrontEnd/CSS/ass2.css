@@ -1,0 +1,63 @@
+
+ .a {
+    width: 100%;
+    float:top;
+    height: 350px;
+   background-color:brown;
+ }
+.b {
+    width: 100%;
+    float:bottom;
+    height: 350px;
+   background-color:brown;
+}
+.c {
+    width: 50%;
+     float: left;
+     height: 100%;
+    background-color:rebeccapurple;
+}
+.d {
+    width: 50%;
+     float:right;
+     height: 100%;
+    background-color:gray ;
+}
+.e {
+    width: 100%;
+    float:top;
+    height: 50%;
+   background-color: orchid;
+}
+.f {
+   width: 100%;
+   float:bottom;
+   height: 50%;
+  background-color:rgb(112, 165, 42);
+}
+.g {
+    width: 50%;
+     float: left;
+     height: 100%;
+    background-color:black;
+}
+.h {
+    width: 50%;
+     float:right;
+     height: 100%;
+    background-color:bisque ;
+}
+.i {
+    width: 50%;
+     float: left;
+     height: 100%;
+    background-color:red;
+}
+.j {
+    width: 50%;
+     float:right;
+     height: 100%;
+    background-color:olive ;
+}
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <style>
+        .d {
+            background-image: url('data:image/jpeg;base64,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');
+            background-size: cover;
+            background-repeat: repeat;
+            height: 750px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <script src="./bootstrap-4.3.1-dist/jquery.js"></script>
+        <script src="./bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
+        <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                        <a class="navbar-brand" href="#">My Trip</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                              <a class="nav-link" href="mytrip.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Transport
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Bus</a>
+                                <a class="dropdown-item" href="#">Train</a>
+                                <a class="dropdown-item" href="#">Flight</a>
+                                <a class="dropdown-item" href="#">Mini Traveller</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Places
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="#">Palmaner</a>
+                                      <a class="dropdown-item" href="#">Madhurai</a>
+                                      <a class="dropdown-item" href="#">Bangalore</a>
+                                      <a class="dropdown-item" href="#">Chennai</a>
+                                    </div>
+                                  </li>
+                          </ul>
+                          <span class="navbar-text">
+                                <a class="nav-link" href="logintrip.html" target="_blank">Login <span class="sr-only">(current)</span></a>
+                              </span>
+                              <span class="navbar-text">
+                                    <a class="nav-link" href="registertrip.html" target="_blank">Register <span class="sr-only">(current)</span></a>
+                                  </span>
+                          
+                        </div>
+                      </nav>
+        </header>
+        <section>
+                <div class="card col-md-4 mt-4 offset-4 bg-light bg-info">
+                        <div class="card-body">
+                            <h1 class="h1 text-center"><i>Register</i></h1>
+                            <form action="#" method="post">
+                                    <div class="form-group">
+                                            <label for="fn">First Name</label>
+                                            <input type="text" name="fname" class="form-control" id="fn">
+                                        </div>
+                                <div class="form-group">
+                                    <label for="fl">Last Name</label>
+                                    <input type="text" name="lname" class="form-control" id="fl">
+                                </div>
+                                <div class="form-group">
+                                        <label for="fr">E-mail</label>
+                                        <input type="mail" name="mail" class="form-control" id="fr">
+                                    </div>
+                                <div class="form-group">
+                                      <label for="cj">Create Password</label>
+                                      <input type="password" name="pwd" class="form-control" id="cj">
+                                  </div>
+                                  <div class="form-group">
+                                        <label for="c">Re-enter Password</label>
+                                        <input type="password" name="rpwd" class="form-control" id="c">
+                                    </div>
+                                  <div class="form-group">
+                                      <button class="form-control btn  btn-primary">Sign Up</button>
+                                  </div>
+                                  <div class="form-group">
+                                        <button class="form-control btn  btn-primary">Reset</button>
+                                    </div>
+                                  
+                                  
+                            </form>
+                         </div>
+                    </div>
+        </section>
+    </div>
+            
+</body>
+</html>

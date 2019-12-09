@@ -1,0 +1,25 @@
+.e ul li  {
+    list-style: none;
+    display: inline-block;
+    float: left;
+}
+.r ol li {
+    list-style: none;
+    display: inline-block;
+    float: right;
+}
+a {
+    padding: 20px;
+    text-decoration: none;
+    font-size: 25px;
+}
+.p {
+    padding: 40px;
+}
+img {
+    padding: 20px;
+    border-radius: 50%;
+    border:2px solid burlywood;
+    margin: 20px;
+    box-shadow:0 0  37px rosybrown;
+}
