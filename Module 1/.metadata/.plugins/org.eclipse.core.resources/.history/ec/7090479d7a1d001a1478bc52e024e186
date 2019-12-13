@@ -1,0 +1,138 @@
+package com.cg.phonesimulatorapplication.phone.dao;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.cg.phonesimulatorapplication.phone.bean.ContactBean;
+
+public class ContactDaoImpl implements ContactDao {
+	Scanner sc=new Scanner(System.in);
+	ContactBean bean=new ContactBean();
+	String dburl="jdbc:mysql://localhost:3306/contactfile"+"?user=root&password=ROOT";
+	String query="SELECT * FROM CONTACT";
+	String query1="INSERT INTO CONTACT VALUES( ?, ?, ? )";
+	String query2="DELETE FROM CONTACT WHERE NAME= ? ";
+	String query3="SELECT * FROM CONTACT WHERE NAME= ? ";
+	String query4="UPDATE CONTACT SET NUMBER= ? WHERE NAME= ? ";
+	public ContactDaoImpl() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+//		try {
+//			Driver driver=new com.mysql.jdbc.Driver();
+//			DriverManager.registerDriver(driver); 	
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+	}
+	@Override
+	public List<ContactBean> getAllContacts() {
+		List<ContactBean> list=new ArrayList<ContactBean>();
+		try(
+				Connection conn=DriverManager.getConnection(dburl);	
+				PreparedStatement pstmt=conn.prepareStatement(query);
+				ResultSet rs=pstmt.executeQuery();
+				) {
+			while(rs.next()) {
+				bean.setName(rs.getString(1));
+				bean.setNumber(rs.getLong(2));
+				bean.setGroups(rs.getString(3));
+				list.add(bean);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public ContactBean getContact(String name) {
+		try(
+				Connection conn=DriverManager.getConnection(dburl);	
+				PreparedStatement pstmt=conn.prepareStatement(query3);
+				ResultSet rs=pstmt.executeQuery();
+				){
+			if(rs.next()) {
+				bean.setName(rs.getString(1));
+				bean.setNumber(rs.getLong(2));
+				bean.setGroups(rs.getString(3));
+			}
+			return bean;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public boolean addContact(ContactBean bean) {
+		try(
+				Connection conn=DriverManager.getConnection(dburl);	
+				PreparedStatement pstmt=conn.prepareStatement(query1);
+				) {
+			pstmt.setString(1,bean.getName());
+			pstmt.setLong(2,bean.getNumber());
+			pstmt.setString(3,bean.getGroups());
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteContact(String name) {
+		try(
+				Connection conn=DriverManager.getConnection(dburl);	
+				PreparedStatement pstmt=conn.prepareStatement(query2);
+				) {
+			pstmt.setString(1,name);
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateContact(String name) {
+		try(
+				Connection conn=DriverManager.getConnection(dburl);	
+				PreparedStatement pstmt=conn.prepareStatement(query4);
+				) {
+			System.out.println("Enter name to be updated");
+			pstmt.setString(2,sc.next());
+			System.out.println("Enter new number ");
+			pstmt.setLong(1,Long.parseLong(sc.next()));
+			int count=pstmt.executeUpdate();
+			if(count>0) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+
+	}
+}
+
+
+

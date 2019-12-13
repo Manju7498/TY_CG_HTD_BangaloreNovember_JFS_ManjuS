@@ -1,0 +1,6 @@
+driverClass=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localhost:3306/ty_cg_nov6
+dbUser=root
+dbPassword=ROOT
+query=SELECT * FROM CONTACT
+query1

@@ -1,0 +1,5 @@
+package com.cg.phonesimulatorapplication.phone.dao;
+
+public class ContactDaoImpl implements ContactDao {
+
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.dao.ContactDaoImpl"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.services.ContactServicesImpl"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.services.ContactServices"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.dao.ContactDao"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.factory.ContactFactory"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.Driver"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.bean.ContactBean"/>
+<fullyQualifiedTypeName name="com.cg.phonesimulatorapplication.phone.controller.Contact"/>
+<fullyQualifiedTypeName name="java.sql.Driver"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+</qualifiedTypeNameHistroy>

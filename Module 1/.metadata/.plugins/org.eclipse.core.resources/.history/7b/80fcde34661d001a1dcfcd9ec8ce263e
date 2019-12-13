@@ -1,0 +1,5 @@
+package com.cg.phonesimulatorapplication.phone.bean;
+
+public class ContactBean {
+
+}

@@ -1,0 +1,38 @@
+package com.cg.phonesimulatorapplication.phone.services;
+
+import java.util.List;
+
+import com.cg.phonesimulatorapplication.phone.bean.ContactBean;
+
+public class ContactServicesImpl implements ContactServices {
+
+	@Override
+	public List<ContactBean> getAllContacts() {
+		return null;
+	}
+
+	@Override
+	public ContactBean getContact() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addContact() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteContact() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateContact() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

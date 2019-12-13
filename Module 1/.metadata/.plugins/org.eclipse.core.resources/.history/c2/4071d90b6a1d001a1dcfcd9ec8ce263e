@@ -1,0 +1,35 @@
+package com.cg.phonesimulatorapplication.phone.dao;
+
+import java.util.List;
+
+import com.cg.phonesimulatorapplication.phone.bean.ContactBean;
+
+public class ContactDaoImpl implements ContactDao {
+
+	@Override
+	public List<ContactBean> getAllContacts() {
+		return null;
+	}
+
+	@Override
+	public ContactBean getContact() {
+		return null;
+	}
+
+	@Override
+	public boolean addContact() {
+		return false;
+	}
+
+	@Override
+	public boolean deleteContact() {
+		return false;
+	}
+
+	@Override
+	public boolean updateContact() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.cg.phonesimulatorapplication.phone.dao;
+
+import java.util.List;
+
+import com.cg.phonesimulatorapplication.phone.bean.ContactBean;
+
+public interface ContactDao {
+	public List<ContactBean> getAllContacts();
+	public ContactBean getContact();
+	public boolean addContact();
+	public boolean deleteContact();
+	public boolean updateContact();
+
+}
