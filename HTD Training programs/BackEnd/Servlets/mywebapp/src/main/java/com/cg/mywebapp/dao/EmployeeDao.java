@@ -1,0 +1,14 @@
+package com.cg.mywebapp.dao;
+
+import java.util.List;
+
+import com.cg.mywebapp.beans.EmployeeInfoBean;
+
+public interface EmployeeDao  {
+	public EmployeeInfoBean searchEmployee(int empId);
+	public EmployeeInfoBean authenticate(int empId,String password);
+	public boolean addEmployee(EmployeeInfoBean employeeInfoBean);
+    public boolean deleteEmployee(int empId);
+    public boolean updateEmployee(EmployeeInfoBean employeeInfoBean);
+    public List<EmployeeInfoBean> getAllEmployees();
+}
