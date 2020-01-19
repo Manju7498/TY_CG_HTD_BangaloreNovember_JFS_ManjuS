@@ -1,0 +1,84 @@
+package com.cg.forestmanagementspringrest.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.cg.forestmanagementspringrest.dto.HaulierBean;
+
+@Repository
+public class HaulierDaoImpl implements HaulierDao {
+	@PersistenceUnit
+	EntityManagerFactory factory;
+
+	@Override
+	public boolean addHaulier(HaulierBean haulier) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		try {
+			transaction.begin();
+			manager.persist(haulier);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public HaulierBean getHaulier(int haulierId) {
+		EntityManager manager = factory.createEntityManager();
+		HaulierBean haulier = manager.find(HaulierBean.class, haulierId);
+		return haulier;
+	}
+
+	@Override
+	public List<HaulierBean> getAllHauliers() {
+		EntityManager manager = factory.createEntityManager();
+		String getall = "from HaulierBean";
+		TypedQuery<HaulierBean> query = manager.createQuery(getall, HaulierBean.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public boolean deleteHaulier(int haulierId) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		HaulierBean haulier = manager.find(HaulierBean.class, haulierId);
+		if (haulier != null) {
+			transaction.begin();
+			manager.remove(haulier);
+			transaction.commit();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateHaulier(HaulierBean haulier) {
+		EntityManager manager = factory.createEntityManager();
+		HaulierBean haulier1 = manager.find(HaulierBean.class, haulier.getHaulierId());
+		EntityTransaction transaction = manager.getTransaction();
+		if (haulier1 != null) {
+			transaction.begin();
+			haulier1.setHaulierName(haulier.getHaulierName());
+			haulier1.setStreetAddress1(haulier.getStreetAddress1());
+			haulier1.setStreetAddress2(haulier.getStreetAddress2());
+			haulier1.setTown(haulier.getTown());
+			haulier1.setPincode(haulier.getPincode());
+			haulier1.setEmail(haulier.getEmail());
+			haulier1.setPhoneNumber(haulier.getPhoneNumber());
+			transaction.commit();
+			return true;
+		} else {
+			return false;
+		}
+	}
+}

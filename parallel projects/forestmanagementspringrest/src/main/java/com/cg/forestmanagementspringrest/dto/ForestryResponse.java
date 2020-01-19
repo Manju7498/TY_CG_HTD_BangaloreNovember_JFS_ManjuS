@@ -1,0 +1,88 @@
+package com.cg.forestmanagementspringrest.dto;
+
+import java.util.List;
+
+public class ForestryResponse {
+	private int statusCode;
+	private String message;
+	private String description;
+	private List<ContractBean> contract;
+	private List<CustomerBean> customer;
+	private List<ProductBean> product;
+	private List<HaulierBean> haulier;
+	private List<OrderBean> order;
+	private List<AdminBean> admin;
+
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<ContractBean> getContract() {
+		return contract;
+	}
+
+	public void setContract(List<ContractBean> contract) {
+		this.contract = contract;
+	}
+
+	public List<CustomerBean> getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(List<CustomerBean> customer) {
+		this.customer = customer;
+	}
+
+	public List<ProductBean> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<ProductBean> product) {
+		this.product = product;
+	}
+
+	public List<HaulierBean> getHaulier() {
+		return haulier;
+	}
+
+	public void setHaulier(List<HaulierBean> haulier) {
+		this.haulier = haulier;
+	}
+
+	public List<OrderBean> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<OrderBean> order) {
+		this.order = order;
+	}
+
+	public List<AdminBean> getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(List<AdminBean> admin) {
+		this.admin = admin;
+	}
+
+}

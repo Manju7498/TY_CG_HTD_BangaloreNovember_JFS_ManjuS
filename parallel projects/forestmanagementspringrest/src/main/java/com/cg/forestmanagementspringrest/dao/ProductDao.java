@@ -1,0 +1,17 @@
+package com.cg.forestmanagementspringrest.dao;
+
+import java.util.List;
+
+import com.cg.forestmanagementspringrest.dto.ProductBean;
+
+public interface ProductDao {
+	public boolean addProduct(ProductBean product);
+
+	public ProductBean getProduct(int productId);
+
+	public List<ProductBean> getAllProducts();
+
+	public boolean deleteProduct(int productId);
+
+	public boolean updateProduct(ProductBean product);
+}
