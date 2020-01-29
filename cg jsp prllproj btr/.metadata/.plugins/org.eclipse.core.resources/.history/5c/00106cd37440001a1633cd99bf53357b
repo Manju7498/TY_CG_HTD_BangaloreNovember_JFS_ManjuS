@@ -1,0 +1,66 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.ContractBean;
+
+@SpringBootTest
+class ContractServiceImplTest {
+		@Autowired
+		private ContractService contractService;
+		ContractBean contractBean;
+
+		@Test
+		void testAddContract() {
+			contractBean = new ContractBean();
+			contractBean.setContractNo("4855");
+			contractBean.setCustomerId("4154");
+			contractBean.setHaulierId("5541");
+			contractBean.setProductId("8546");
+			contractBean.setDeliveryDate("02/08/2020");
+			contractBean.setDeliveryDay("monday");
+			contractBean.setQuantity("5000");
+			boolean insertCheck = contractService.addContract(contractBean);
+			assertEquals(insertCheck, true);
+		}
+
+		@Test
+		void testGetContract() {
+			ContractBean contractBean = contractService.getContract("2875");
+			assertNotNull(contractBean);
+		}
+
+		@Test
+		void testGetAllContracts() {
+			List<ContractBean> contractsList = contractService.getAllContracts();
+			assertNotNull(contractsList);
+		}
+
+		@Test
+		void testDeleteContract() {
+			boolean deleteCheck = contractService.deleteContract("9876");
+			assertEquals(deleteCheck, false);
+		}
+
+		@Test
+		void testUpdateContract() {
+			contractBean = new ContractBean();
+			contractBean.setContractNo("2");
+			contractBean.setCustomerId("4154");
+			contractBean.setProductId("8546");
+			contractBean.setHaulierId("5541");
+			contractBean.setDeliveryDay("monday");
+			contractBean.setDeliveryDate("02/08/2028");
+			contractBean.setQuantity("4000");
+			boolean updateCheck = contractService.updateContract("2", contractBean);
+			assertEquals(updateCheck, true);
+		}
+
+	
+}

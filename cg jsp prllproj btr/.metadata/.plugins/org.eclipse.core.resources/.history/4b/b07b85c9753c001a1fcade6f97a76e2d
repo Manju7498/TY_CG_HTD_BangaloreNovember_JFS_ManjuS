@@ -1,0 +1,12 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+
+public interface UserDao {
+	public UserBean login(UserBean bean);
+
+	public boolean addUser(UserBean bean);
+	
+	public boolean deleteUser(String email);
+
+}

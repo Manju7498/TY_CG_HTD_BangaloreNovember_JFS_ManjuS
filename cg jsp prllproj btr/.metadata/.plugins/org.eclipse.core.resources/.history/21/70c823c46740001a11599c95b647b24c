@@ -1,0 +1,24 @@
+package com.cg.forestrymanagementjpa.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class UserServiceImplTest {
+
+	@Test
+	void testAddUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+}

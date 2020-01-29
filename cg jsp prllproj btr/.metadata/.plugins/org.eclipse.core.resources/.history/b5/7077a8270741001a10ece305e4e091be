@@ -1,0 +1,7 @@
+package com.cg.forestrymanagementjpa.exceptions;
+
+public class ForestryExceptions extends RuntimeException {
+	public ForestryExceptions() {
+
+	}
+}

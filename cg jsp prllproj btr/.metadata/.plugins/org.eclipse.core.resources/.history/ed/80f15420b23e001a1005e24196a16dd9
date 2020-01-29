@@ -1,0 +1,79 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.HaulierBean;
+
+class HaulierDaoImplTest {
+	public static HaulierBean haulierBean;
+	public static HaulierDao haulierDao = new HaulierDaoImpl();
+
+	@BeforeAll
+	@Test
+	static void testInsertHaulierDuplicate() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierId(8756);
+		haulierBean.setHaulierName("priya");
+		haulierBean.setStreetAddress1("ts");
+		haulierBean.setStreetAddress2("hs");
+		haulierBean.setTown("palamaner");
+		haulierBean.setPincode(517408);
+		haulierBean.setEmail("jayasri@gmail.com");
+		haulierBean.setPhoneNumber(9550316616l);
+		boolean insertCheck = haulierDao.insertHaulier(haulierBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testGetAllHauliers() {
+		List<HaulierBean> hauliersList = haulierDao.getAllHauliers();
+		assertNotNull(hauliersList);
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		boolean deleteCheck = haulierDao.deleteHaulier(8756);
+		assertEquals(deleteCheck, true);
+	}
+
+	@Test
+	void testInsertHaulier() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierId(8752);
+		haulierBean.setHaulierName("priya");
+		haulierBean.setStreetAddress1("ts");
+		haulierBean.setStreetAddress2("hs");
+		haulierBean.setTown("palamaner");
+		haulierBean.setPincode(517408);
+		haulierBean.setEmail("jayasri@gmail.com");
+		haulierBean.setPhoneNumber(9550316616l);
+		boolean insertCheck = haulierDao.insertHaulier(haulierBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testHaulierLogin() {
+		HaulierBean haulier = haulierDao.haulierLogin(1);
+		assertNotNull(haulier);
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierName("syamala");
+		haulierBean.setStreetAddress1("sainagar");
+		haulierBean.setStreetAddress2("street");
+		haulierBean.setTown("vellore");
+		haulierBean.setPincode(547125);
+		haulierBean.setEmail("syamala@gmail.com");
+		haulierBean.setPhoneNumber(9550316616l);
+		boolean updateCheck = haulierDao.updateHaulier(2, haulierBean);
+		assertEquals(updateCheck, true);
+	}
+
+}

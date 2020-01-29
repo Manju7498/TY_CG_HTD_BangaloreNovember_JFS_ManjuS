@@ -1,0 +1,78 @@
+package com.cg.forestmanagementspringrest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestmanagementspringrest.dao.ContractDao;
+import com.cg.forestmanagementspringrest.dao.CustomerDao;
+import com.cg.forestmanagementspringrest.dao.HaulierDao;
+import com.cg.forestmanagementspringrest.dao.ProductDao;
+import com.cg.forestmanagementspringrest.dto.ContractBean;
+import com.cg.forestmanagementspringrest.dto.CustomerBean;
+import com.cg.forestmanagementspringrest.dto.HaulierBean;
+import com.cg.forestmanagementspringrest.dto.ProductBean;
+import com.cg.forestmanagementspringrest.validations.Validations;
+
+@Service
+public class ContractServiceImpl implements ContractService {
+	@Autowired
+	private ContractDao contractDao;
+	@Autowired
+	CustomerDao customerDao;
+	@Autowired
+	ProductDao productDao;
+	@Autowired
+	HaulierDao haulierDao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addContract(ContractBean contract) {
+		try {
+			CustomerBean customerBean = new CustomerBean();
+			HaulierBean haulierBean = new HaulierBean();
+			ProductBean productBean = new ProductBean();
+			if (customerDao.getCustomer(contract.getCustomerId())!=null) {
+				if (haulierDao.getHaulier(contract.getHaulierId())!=null) {
+					if (productDao.getProduct(contract.getProductId())!=null) {
+						return contractDao.addContract(contract);
+					} else {
+						System.err.println("Product Id not found");
+					}
+				} else {
+					System.err.println("Haulier Id not found");
+				}
+			} else {
+				System.err.println("Customer Id not found");
+			}
+		} catch (Exception e) {
+			System.err.println("Something went wrong!!!");
+		}
+		return false;
+	}
+
+	@Override
+	public ContractBean getContract(String contractNo) {
+		// TODO Auto-generated method stub
+		return contractDao.getContract(contractNo);
+	}
+
+	@Override
+	public List<ContractBean> getAllContracts() {
+		// TODO Auto-generated method stub
+		return contractDao.getAllContracts();
+	}
+
+	@Override
+	public boolean deleteContract(String contractNo) {
+		// TODO Auto-generated method stub
+		return contractDao.deleteContract(contractNo);
+	}
+
+	@Override
+	public boolean updateContract(ContractBean contract) {
+		return contractDao.updateContract(contract);
+	}
+
+}

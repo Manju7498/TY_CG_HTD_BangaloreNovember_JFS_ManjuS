@@ -1,0 +1,53 @@
+package com.cg.forestmanagementspringrest.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.cg.forestmanagementspringrest.config.ORMConfig;
+import com.cg.forestmanagementspringrest.dto.UserBean;
+import com.cg.forestmanagementspringrest.testormconfig.SpringRestTestConfig;
+
+@SpringJUnitConfig(classes = { SpringRestTestConfig.class, ORMConfig.class })
+class UserDaoImplTest {
+	
+	@Autowired
+	public UserDao userDao;
+
+	UserBean userBean;
+	
+//	@Test
+//	void testLogin() {
+//		UserBean userBean1=userDao.login(userBean);
+//		assertNotNull(userBean1);
+//	}
+
+	@Test
+	void testRegister() {
+		userBean=new UserBean();
+		userBean.setName("Chinni");
+		userBean.setEmail("chinni@gmail.com");
+		userBean.setPassword("Chinni@209");
+		userBean.setPhoneNumber("766099617");
+		userBean.setRole("admin");
+		boolean check=userDao.register(userBean);
+		assertEquals(check,true);
+	}
+
+//	@Test
+//	void testGetAllUsers() {
+//		List<UserBean> userList=userDao.getAllUsers();
+//		assertNotNull(userList);
+//	}
+//
+//	@Test
+//	void testDeleteUser() {
+//		boolean check1=userDao.deleteUser("chinni@gmail.com");
+//		assertEquals(check1,true);	
+//	}
+
+}

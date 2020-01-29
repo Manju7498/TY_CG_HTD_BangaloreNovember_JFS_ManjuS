@@ -1,0 +1,58 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.ProductBean;
+@SpringBootTest
+class ProductDaoImplTest {
+	@Autowired
+	public ProductDao productDao;
+	ProductBean productBean;
+
+	@Test
+	void testAddProduct() {
+		productBean = new ProductBean();
+		productBean.setProductId("6552");
+		productBean.setProductName("priya");
+		productBean.setProductOrderDate("21/02/2021");
+		productBean.setProductDeliveryDate("06/04/2020");
+		boolean insertCheck = productDao.addProduct(productBean);
+		assertEquals(insertCheck, false);
+	}
+
+	@Test
+	void testGetProduct() {
+		ProductBean product = productDao.getProduct("1");
+		assertNotNull(product);
+	}
+
+	@Test
+	void testGetAllProducts() {
+		List<ProductBean> productsList = productDao.getAllProducts();
+		assertNotNull(productsList);
+	}
+
+	@Test
+	void testDeleteProduct() {
+		boolean deleteCheck = productDao.deleteProduct("9854");
+		assertEquals(deleteCheck,false);
+	}
+
+	@Test
+	void testUpdateProduct() {
+		productBean = new ProductBean();
+		productBean.setProductId("1");
+		productBean.setProductName("latha");
+		productBean.setProductDeliveryDate("02/04/2020");
+		productBean.setProductOrderDate("06/04/2020");
+		boolean insertCheck = productDao.updateProduct("1",productBean);
+		assertEquals(insertCheck, true);
+	}
+
+}

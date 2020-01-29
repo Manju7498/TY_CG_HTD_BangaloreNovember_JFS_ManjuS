@@ -1,0 +1,10 @@
+127.0.0.1 - - [13/Jan/2020:14:56:32 +0530] "GET / HTTP/1.1" 404 709
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:14:57:31 +0530] "POST /add-haulier HTTP/1.1" 404 720
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:14:58:47 +0530] "POST /forestmanagementspringrest/add-haulier HTTP/1.1" 200 154
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:14:59:18 +0530] "POST /forestmanagementspringrest/get-haulier/1 HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:14:59:26 +0530] "GET /forestmanagementspringrest/get-haulier/1 HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:14:59:27 +0530] "GET /forestmanagementspringrest/get-haulier/1 HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:15:00:11 +0530] "GET /forestmanagementspringrest/view-haulier/1 HTTP/1.1" 200 325
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:15:01:00 +0530] "GET /forestmanagementspringrest/view-allHauliers HTTP/1.1" 200 326
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:15:04:22 +0530] "POST /forestmanagementspringrest/add-haulier HTTP/1.1" 200 154
+0:0:0:0:0:0:0:1 - - [13/Jan/2020:15:04:44 +0530] "GET /forestmanagementspringrest/view-allHauliers HTTP/1.1" 200 500

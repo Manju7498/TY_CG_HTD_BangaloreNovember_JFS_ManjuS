@@ -1,0 +1,55 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+
+@SpringBootTest
+class UserServiceImplTest {
+		@Autowired
+		public UserService userService;
+		UserBean userBean;
+
+		@Test
+		void testLogin() {
+			userBean = new UserBean();
+			userBean.setEmail("amulya@gmail.com");
+			userBean.setPassword("Amulya@518");
+			UserBean userBean1 = userService.login(userBean);
+			assertNotNull(userBean1);
+		}
+
+		@Test
+		void testRegister() {
+			userBean = new UserBean();
+			userBean.setName("Chinni");
+			userBean.setEmail("chinni@gmail.com");
+			userBean.setPassword("Chinni@123");
+			userBean.setPhoneNumber("9550316616");
+			userBean.setRole("client");
+			boolean check = userService.register(userBean);
+			assertEquals(check,true);
+		}
+
+		@Test
+		void testGetAllUsers() {
+			List<UserBean> userList = userService.getAllUsers();
+			assertNotNull(userList);
+		}
+
+		@Test
+		void testDeleteUser() {
+			boolean check1 = userService.deleteUser("mounika@gmail.com");
+			assertEquals(check1, false);
+		}
+
+	
+	
+
+}

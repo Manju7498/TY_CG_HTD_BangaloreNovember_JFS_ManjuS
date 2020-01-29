@@ -1,0 +1,51 @@
+package com.cg.forestrymanagementcollections.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementcollections.bean.UserBean;
+
+class UserDaoImplTest {
+	private UserBean userBean=new UserBean();
+	private UserDao userDao=new UserDaoImpl();
+	@BeforeEach
+	void addUser() {
+			userBean.setEmail("manju@gmail.com");
+			userBean.setPassword("Manju@518");
+			userBean.setRole("client");
+			userDao.addUser("manju@gmail.com",userBean );
+		}
+
+	@Test
+	void testAddUser() {
+		userBean.setEmail("syamala@gmail.com");
+		userBean.setPassword("Syamala@123");
+		userBean.setRole("sceduler");
+		boolean check=userDao.addUser("syamala@gmail.com",userBean );
+		assertEquals(check, true);
+	}
+
+	@Test
+	void testSignIn() {
+		userBean.setEmail("syamala@gmail.com");
+		userBean.setPassword("Syamala@123");
+		userBean.setRole("sceduler");
+		boolean check=userDao.signIn(userBean);
+		assertEquals(check,true);
+	}
+
+	@Test
+	void testLogin() {
+		boolean check=userDao.login(userBean);
+		assertEquals(check,true);	
+	}
+
+	@Test
+	void testDeleteUser() {
+		boolean result = userDao.deleteUser("manju@gmail.com");
+		assertEquals(result, true);
+	}
+
+}

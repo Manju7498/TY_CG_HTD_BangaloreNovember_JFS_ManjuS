@@ -1,0 +1,52 @@
+package com.cg.forestrymanagementcollections.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementcollections.bean.CustomerBean;
+import com.cg.forestrymanagementcollections.bean.HaulierBean;
+
+class HaulierDaoImplTest {
+	private HaulierBean haulierBean=new HaulierBean();
+	private HaulierDao haulierDao=new HaulierDaoImpl();
+	@BeforeEach
+	void addHaulier() {
+		haulierBean.setHaulierId(8544);
+		haulierBean.setHaulierName("manju");
+		haulierBean.setStreetAddress1("#sainagar");
+		haulierBean.setStreetAddress2("MT Road");
+		haulierBean.setTown("vellore");
+		haulierBean.setPostCode(542156);
+		haulierBean.setEmail("manju@gmail.com");
+		haulierDao.addHaulier(8544, haulierBean);
+	}
+	@Test
+	void testDeleteHaulier() {
+		boolean result = haulierDao.deleteHaulier(8544);
+		assertEquals(result, true);
+	}
+
+	@Test
+	void testGetHaulier() {
+		HaulierBean result = haulierDao.getHaulier(8544);
+		assertNotNull(result);
+	}
+
+	@Test
+	void testAddHaulier() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllHauliers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		fail("Not yet implemented");
+	}
+
+}

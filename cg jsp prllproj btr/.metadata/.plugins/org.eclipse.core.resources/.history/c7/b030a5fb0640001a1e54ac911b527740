@@ -1,0 +1,43 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.ProductBean;
+
+class ProductDaoImplTest {
+	private ProductBean productBean=new ProductBean();
+	private  ProductDao productDao = new ProductDaoImpl();
+
+	@Test
+	void testProductDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllProducts() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testProductLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertProduct() {
+		fail("Not yet implemented");
+	}
+
+}

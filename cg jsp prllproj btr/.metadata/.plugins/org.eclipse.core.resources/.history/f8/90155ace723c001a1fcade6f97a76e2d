@@ -1,0 +1,32 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.ProductDao;
+import com.cg.forestrymanagementspringboot.dao.UserDao;
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+
+@Service
+public class UserServiceImpl implements UserService{
+		@Autowired
+		private UserDao dao;
+	@Override
+	public UserBean login(UserBean bean) {
+		// TODO Auto-generated method stub
+		return dao.login(bean);
+	}
+
+	@Override
+	public boolean addUser(UserBean bean) {
+		// TODO Auto-generated method stub
+		return  dao.addUser(bean);
+	}
+
+	@Override
+	public boolean deleteUser(String email) {
+		// TODO Auto-generated method stub
+		return dao.deleteUser(email);
+	}
+
+}

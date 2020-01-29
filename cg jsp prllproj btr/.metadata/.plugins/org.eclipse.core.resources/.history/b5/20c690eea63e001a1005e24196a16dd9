@@ -1,0 +1,40 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.ContractBean;
+
+class ContractDaoImplTest {
+	public static ContractBean contractBean;
+	public static ContractDao contractDao = new ContractDaoImpl();
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> contractsList = contractDao.getAllContracts();
+		assertNotNull(contractsList);
+	}
+
+	@Test
+	void testDeleteContract() {
+		
+	}
+
+	@Test
+	void testInsertContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+}

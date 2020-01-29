@@ -1,0 +1,34 @@
+package com.cg.forestrymanagementjdbc.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CustomerServiceImplTest {
+
+	@Test
+	void testGetAllCustomers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCustomerLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		fail("Not yet implemented");
+	}
+
+}

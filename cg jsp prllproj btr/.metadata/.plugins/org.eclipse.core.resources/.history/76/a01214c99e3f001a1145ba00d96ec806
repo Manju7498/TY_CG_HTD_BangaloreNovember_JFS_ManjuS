@@ -1,0 +1,57 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.CustomerBean;
+import com.cg.forestrymanagementjpa.bean.ProductBean;
+
+class ProductDaoImplTest {
+	public static ProductBean productBean;
+	public static ProductDao productDao = new ProductDaoImpl();
+
+	@Test
+	void testGetAllProducts() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testProductLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProductName() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertProduct() {
+		productBean = new ProductBean();
+		productBean.setProductId("6552");
+		productBean.setProductName("priya");
+		productBean.setProductOrderDate("21/02/2021");
+		productBean.setProductDeliveryDate("06/04/2020");
+		boolean insertCheck = productDao.insertProduct(productBean);
+		assertEquals(insertCheck, true);	
+	}
+
+	@BeforeAll
+	@Test
+	void testInsertProductDuplicate() {
+		productBean = new ProductBean();
+		productBean.setProductId(8756);
+		productBean.setProductName("priya");
+		productBean.setProductOrderDate("21/02/2021");
+		productBean.setProductDeliveryDate("06/04/2020");
+		boolean insertCheck = productDao.insertProduct(productBean);
+		assertEquals(insertCheck, true);
+	}
+}

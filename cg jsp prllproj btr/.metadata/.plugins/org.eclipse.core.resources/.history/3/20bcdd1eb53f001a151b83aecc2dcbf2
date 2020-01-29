@@ -1,0 +1,43 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.ContractBean;
+
+class ContractDaoImplTest {
+	private ContractBean contractBean=new ContractBean();
+	private ContractDao contractDao=new ContractDaoImpl();
+
+	@Test
+	void testContractDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllContracts() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.capgemini.forestrymanagementcucumber.stepdefinition;
+
+public class Login {
+	
+
+@Given("^chrome and enter  url$")
+public void chrome_and_enter_url() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^Enter valid   email and password$")
+public void enter_valid_email_and_password() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^click on the Login$")
+public void click_on_the_Login() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^Click on the Logout button$")
+public void click_on_the_Logout_button() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@Then("^close the driver$")
+public void close_the_driver() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+
+}

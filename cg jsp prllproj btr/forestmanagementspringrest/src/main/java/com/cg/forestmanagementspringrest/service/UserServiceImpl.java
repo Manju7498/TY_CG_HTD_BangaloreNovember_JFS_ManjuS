@@ -1,0 +1,58 @@
+package com.cg.forestmanagementspringrest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestmanagementspringrest.dao.UserDao;
+import com.cg.forestmanagementspringrest.dto.UserBean;
+import com.cg.forestmanagementspringrest.validations.Validations;
+
+@Service
+public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean register(UserBean bean) {
+		if (validations.nameValidation(bean.getName())) {
+			if (validations.emailValidation(bean.getEmail())) {
+					if (validations.phoneNumberValidation(bean.getPhoneNumber())) {
+						if (bean.getRole().equalsIgnoreCase("admin") || bean.getRole().equalsIgnoreCase("client")
+								|| bean.getRole().equalsIgnoreCase("scheduler")) {
+							return dao.register(bean);
+						} else {
+							System.err.println("Please enter valid role");
+						}
+					} else {
+						System.err.println("Please enter valid phone number");
+					}
+			} else {
+				System.err.println("Please enter valid email");
+			}
+		} else {
+			System.err.println("Please enter valid name");
+		}
+		return false;
+	}
+
+	@Override
+	public UserBean login(UserBean bean) {
+			return dao.login(bean);
+	}
+
+	@Override
+	public List<UserBean> getAllUsers() {
+		// TODO Auto-generated method stub
+		return dao.getAllUsers();
+	}
+
+	@Override
+	public boolean deleteUser(String email) {
+		// TODO Auto-generated method stub
+		return dao.deleteUser(email);
+	}
+
+}

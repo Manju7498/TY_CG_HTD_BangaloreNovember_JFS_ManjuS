@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="methods">
+  <test thread-count="5" name="ForestryTest(failed)" parallel="methods">
+    <classes>
+      <class name="forestrymanagementselenium.ForestryTest">
+        <methods>
+          <include name="stop"/>
+          <include name="login"/>
+          <include name="start"/>
+          <include name="register"/>
+        </methods>
+      </class> <!-- forestrymanagementselenium.ForestryTest -->
+    </classes>
+  </test> <!-- ForestryTest(failed) -->
+</suite> <!-- Failed suite [Suite] -->

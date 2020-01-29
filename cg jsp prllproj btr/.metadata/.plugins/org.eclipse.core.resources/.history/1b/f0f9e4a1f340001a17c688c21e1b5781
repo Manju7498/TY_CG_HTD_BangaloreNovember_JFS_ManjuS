@@ -1,0 +1,43 @@
+package com.cg.forestrymanagementcollections.service;
+
+import com.cg.forestrymanagementcollections.bean.UserBean;
+import com.cg.forestrymanagementcollections.controller.AdminBean;
+import com.cg.forestrymanagementcollections.dao.UserDao;
+import com.cg.forestrymanagementcollections.dao.UserDaoImpl;
+
+public class UserServiceImpl implements UserService {
+	UserDao dao = new UserDaoImpl();
+
+	@Override
+	public boolean addUser(String email, UserBean user) {
+		// TODO Auto-generated method stub
+		return dao.addUser(email, user);
+	}
+
+	@Override
+	public boolean login(UserBean user) {
+		// TODO Auto-generated method stub
+		return dao.login(user);
+	}
+
+	@Override
+	public boolean deleteUser(String email) {
+		// TODO Auto-generated method stub
+		return dao.deleteUser(email);
+	}
+
+	@Override
+	public boolean signIn(AdminBean admin) {
+		// TODO Auto-generated method stub
+		return dao.signIn(admin);
+	}
+
+	@Override
+	public boolean addAdmin(String email, AdminBean admin) {
+		// TODO Auto-generated method stub
+		return dao.addAdmin(email, admin);
+	}
+
+	
+
+}

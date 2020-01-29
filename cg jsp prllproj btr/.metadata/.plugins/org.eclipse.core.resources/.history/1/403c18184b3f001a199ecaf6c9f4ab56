@@ -1,0 +1,59 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.CustomerBean;
+import com.cg.forestrymanagementjpa.bean.HaulierBean;
+
+class HaulierDaoImplTest {
+	public static HaulierBean haulierBean;
+	public static HaulierDao haulierDao = new HaulierDaoImpl();
+
+	@Test
+	void testGetAllHauliers() {
+		List<HaulierBean> hauliersList = haulierDao.getAllHauliers();
+		assertNotNull(hauliersList);
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		boolean deleteCheck = haulierDao.deleteHaulier(8756);
+		assertEquals(deleteCheck,true);
+	}
+	@BeforeAll
+	@Test
+	static void testInsertHaulierDuplicate() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierId(87);
+		haulierBean.setHaulierName("priya");
+		haulierBean.setStreetAddress1("ts");
+		haulierBean.setStreetAddress2("hs");
+		haulierBean.setTown("palamaner");
+		haulierBean.setPincode(517408);
+		haulierBean.setEmail("jayasri@gmail.com");
+		haulierBean.setPhoneNumber(9550316616l);
+		boolean insertCheck = haulierDao.insertHaulier(haulierBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testInsertHaulier() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testHaulierLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		fail("Not yet implemented");
+	}
+
+}

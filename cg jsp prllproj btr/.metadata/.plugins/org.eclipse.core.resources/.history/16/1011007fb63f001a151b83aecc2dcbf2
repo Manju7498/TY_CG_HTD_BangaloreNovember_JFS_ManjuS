@@ -1,0 +1,71 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.ContractBean;
+
+class ContractDaoImplTest {
+	static private ContractBean contractBean = new ContractBean();
+	static private ContractDao contractDao = new ContractDaoImpl();
+
+	@BeforeAll
+	static void testInsertContractDuplicate() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(11);
+		contractBean.setCustomerId(5456);
+		contractBean.setHaulierId(1);
+		contractBean.setProductId(1);
+		contractBean.setDeliveryDate("01/05/2020");
+		contractBean.setDeliveryDay("monday");
+		contractBean.setQuantity(5000);
+		boolean insertCheck = contractDao.insertContract(contractBean);
+	}
+
+	@Test
+	void testInsertContract() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(22);
+		contractBean.setCustomerId(2);
+		contractBean.setHaulierId(1);
+		contractBean.setProductId(1);
+		contractBean.setDeliveryDate("02/08/2020");
+		contractBean.setDeliveryDay("monday");
+		contractBean.setQuantity(5000);
+		boolean insertCheck = contractDao.insertContract(contractBean);
+		assertEquals(insertCheck, false);
+	}
+
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> contractsList = contractDao.getAllContracts();
+		assertNotNull(contractsList);
+	}
+
+	@Test
+	void testDeleteContract() {
+		boolean deleteCheck = contractDao.deleteContract(11);
+		assertEquals(deleteCheck, true);
+	}
+
+	@Test
+	void testContractLogin() {
+		ContractBean contractBean = contractDao.contractLogin(1);
+		assertNotNull(contractBean);
+	}
+
+	@Test
+	void testUpdateContract() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(12);
+		contractBean.setDeliveryDate("02/08/2028");
+		contractBean.setQuantity(4000);
+		boolean insertCheck = contractDao.updateContract(12, contractBean);
+		assertEquals(insertCheck, true);
+	}
+
+}

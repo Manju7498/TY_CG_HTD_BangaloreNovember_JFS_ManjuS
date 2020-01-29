@@ -1,0 +1,65 @@
+package com.cg.forestmanagementspringrest.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.cg.forestmanagementspringrest.config.ORMConfig;
+import com.cg.forestmanagementspringrest.dao.ProductDao;
+import com.cg.forestmanagementspringrest.dto.ProductBean;
+import com.cg.forestmanagementspringrest.testormconfig.SpringRestTestConfig;
+
+@SpringJUnitConfig(classes = { SpringRestTestConfig.class, ORMConfig.class })
+class ProductServiceImplTest {
+		
+		@Autowired
+		public ProductService productService;
+
+		ProductBean productBean;
+		
+		@Test
+		void testAddProduct() {
+			productBean = new ProductBean();
+			productBean.setProductId("845");
+			productBean.setProductName("priya");
+			productBean.setProductOrderDate("21/02/2021");
+			productBean.setProductDeliveryDate("06/04/2020");
+			boolean insertCheck = productService.addProduct(productBean);
+			assertEquals(insertCheck, false);
+		}
+
+		@Test
+		void testGetProduct() {
+			ProductBean product = productService.getProduct("333");
+			assertNotNull(product);
+		}
+
+		@Test
+		void testGetAllProducts() {
+			List<ProductBean> productsList = productService.getAllProducts();
+			assertNotNull(productsList);
+		}
+
+		@Test
+		void testDeleteProduct() {
+			boolean deleteCheck = productService.deleteProduct("6552");
+			assertEquals(deleteCheck,false);
+		}
+
+		@Test
+		void testUpdateProduct() {
+			productBean = new ProductBean();
+			productBean.setProductId("333");
+			productBean.setProductName("latha");
+			productBean.setProductOrderDate("06/03/2020");
+			productBean.setProductDeliveryDate("04/06/2020");
+			boolean insertCheck = productService.updateProduct("333",productBean);
+			assertEquals(insertCheck, true);
+		}
+
+
+}

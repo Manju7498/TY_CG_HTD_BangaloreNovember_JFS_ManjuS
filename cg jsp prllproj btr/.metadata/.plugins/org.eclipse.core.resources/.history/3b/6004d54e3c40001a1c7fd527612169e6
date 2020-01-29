@@ -1,0 +1,41 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.HaulierBean;
+
+@SpringBootTest
+class HaulierDaoImplTest {
+	@Autowired
+	public HaulierDao haulierDao;
+	HaulierBean haulierBean;
+	@Test
+	void testAddHaulier() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetHaulier() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllHauliers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		fail("Not yet implemented");
+	}
+
+}

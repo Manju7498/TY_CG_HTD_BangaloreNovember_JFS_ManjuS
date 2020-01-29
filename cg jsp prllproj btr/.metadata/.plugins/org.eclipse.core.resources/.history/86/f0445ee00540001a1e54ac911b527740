@@ -1,0 +1,58 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.ContractBean;
+import com.cg.forestrymanagementjdbc.bean.OrderBean;
+import com.cg.forestrymanagementjdbc.exceptions.ValidationExceptions;
+
+class OrderDaoImplTest {
+	private OrderBean orderBean=new OrderBean();
+	private OrderDao orderDao=new OrderDaoImpl();
+
+
+	@Test
+	void testGetAllOrders() {
+		List<ContractBean> contract = contractDao.getAllContracts();
+		assertNotNull(contract);
+	}
+
+	@Test
+	void testOrderLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteOrder() {
+		
+	}
+
+	@Test
+	void testInsertOrder() {
+		try {
+			contractBean.setContractNo(142);
+			contractBean.setCustomerId(12);
+			contractBean.setHaulierId(23);
+			contractBean.setProductId(34);
+			contractBean.setDeliveryDate("07/04/2020");
+			contractBean.setDeliveryDay("tuesday");
+			contractBean.setQuantity(2000);
+			boolean insertContract = contractDao.insertContract(contractBean);
+			assertEquals(insertContract, true);
+			}catch (Exception e) {
+				assertThrows(ValidationExceptions.class, ()-> {
+					contractDao.insertContract(contractBean);
+				});
+			}
+	}
+
+}

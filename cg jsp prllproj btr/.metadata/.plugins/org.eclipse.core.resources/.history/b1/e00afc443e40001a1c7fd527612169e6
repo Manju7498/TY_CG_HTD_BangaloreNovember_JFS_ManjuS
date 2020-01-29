@@ -1,0 +1,34 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class OrderDaoImplTest {
+
+	@Test
+	void testAddOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

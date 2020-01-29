@@ -1,0 +1,68 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.UserDao;
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+import com.cg.forestrymanagementspringboot.validations.Validations;
+
+@Service
+public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean register(UserBean bean) {
+		if (validations.nameValidation(bean.getName())) {
+			if (validations.emailValidation(bean.getEmail())) {
+				if (validations.passwordValidation(bean.getPassword())) {
+					if (validations.phoneNumberValidation(bean.getPhoneNumber())) {
+						if (bean.getRole().equalsIgnoreCase("admin") || bean.getRole().equalsIgnoreCase("client")
+								|| bean.getRole().equalsIgnoreCase("scheduler")) {
+							return dao.register(bean);
+						} else {
+							System.err.println("Please enter valid role");
+						}
+					} else {
+						System.err.println("Please enter valid phone number");
+					}
+				} else {
+					System.err.println("Please enter valid password");
+				}
+			} else {
+				System.err.println("Please enter valid email");
+			}
+		} else {
+			System.err.println("Please enter valid name");
+		}
+		return false;
+	}
+
+	@Override
+	public UserBean login(UserBean bean) {
+		// TODO Auto-generated method stub
+		if (validations.emailValidation(bean.getEmail())) {
+			return dao.login(bean);
+		} else {
+			System.err.println("Please enter valid email");
+		}
+		return null;
+	}
+
+	@Override
+	public List<UserBean> getAllUsers() {
+		// TODO Auto-generated method stub
+		return dao.getAllUsers();
+	}
+
+	@Override
+	public boolean deleteUser(String email) {
+		// TODO Auto-generated method stub
+		return dao.deleteUser(email);
+	}
+
+}

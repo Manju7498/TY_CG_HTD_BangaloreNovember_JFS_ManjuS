@@ -1,0 +1,96 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.ContractDao;
+import com.cg.forestrymanagementspringboot.dto.ContractBean;
+import com.cg.forestrymanagementspringboot.validations.Validations;
+
+@Service
+public class ContractServiceImpl implements ContractService {
+	@Autowired
+	private ContractDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addContract(ContractBean contract) {
+		if (validations.idValidation(contract.getContractNo())) {
+			if (validations.idValidation(contract.getCustomerId())) {
+				if (validations.idValidation(contract.getProductId())) {
+					if (validations.idValidation(contract.getHaulierId())) {
+						if (validations.dateValidation(contract.getDeliveryDate())) {
+							if (validations.idValidation(contract.getQuantity())) {
+								return dao.addContract(contract);
+							} else {
+								System.err.println("Please enter valid quantity");
+							}
+						} else {
+							System.err.println("Please enter valid date");
+						}
+					} else {
+						System.err.println("Please enter valid haulier id");
+					}
+				} else {
+					System.err.println("Please enter valid product id");
+				}
+			} else {
+				System.err.println("Please enter valid customer id");
+			}
+		} else {
+			System.err.println("Please enter valid contract id");
+		}
+		return false;
+	}
+
+	@Override
+	public ContractBean getContract(String contractNo) {
+		// TODO Auto-generated method stub
+		return dao.getContract(contractNo);
+	}
+
+	@Override
+	public List<ContractBean> getAllContracts() {
+		// TODO Auto-generated method stub
+		return dao.getAllContracts();
+	}
+
+	@Override
+	public boolean deleteContract(String contractNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteContract(contractNo);
+	}
+
+	@Override
+	public boolean updateContract(String contractNo,ContractBean contract) {
+		if (validations.idValidation(contract.getContractNo())) {
+			if (validations.idValidation(contract.getCustomerId())) {
+				if (validations.idValidation(contract.getProductId())) {
+					if (validations.idValidation(contract.getHaulierId())) {
+						if (validations.dateValidation(contract.getDeliveryDate())) {
+							if (validations.idValidation(contract.getQuantity())) {
+								return dao.updateContract(contractNo,contract);
+							} else {
+								System.err.println("Please enter valid quantity");
+							}
+						} else {
+							System.err.println("Please enter valid date");
+						}
+					} else {
+						System.err.println("Please enter valid haulier id");
+					}
+				} else {
+					System.err.println("Please enter valid product id");
+				}
+			} else {
+				System.err.println("Please enter valid customer id");
+			}
+		} else {
+			System.err.println("Please enter valid contract id");
+		}
+		return false;
+	}
+
+}

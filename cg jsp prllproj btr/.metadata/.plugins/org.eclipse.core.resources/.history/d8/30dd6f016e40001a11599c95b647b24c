@@ -1,0 +1,34 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractServiceImplTest {
+
+	@Test
+	void testAddContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllContracts() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+}

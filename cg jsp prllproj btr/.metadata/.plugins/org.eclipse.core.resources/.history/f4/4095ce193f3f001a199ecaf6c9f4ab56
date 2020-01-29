@@ -1,0 +1,69 @@
+package com.cg.forestmanagementspringrest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestmanagementspringrest.dao.CustomerDao;
+import com.cg.forestmanagementspringrest.dao.HaulierDao;
+import com.cg.forestmanagementspringrest.dao.OrderDao;
+import com.cg.forestmanagementspringrest.dao.ProductDao;
+import com.cg.forestmanagementspringrest.dto.OrderBean;
+@Service
+public class OrderServiceImpl implements OrderService {
+	@Autowired
+	private OrderDao dao;
+	@Autowired
+	CustomerDao customerDao;
+	@Autowired
+	ProductDao productDao;
+	@Autowired
+	HaulierDao haulierDao;
+	@Override
+	public boolean addOrder(OrderBean order) {
+		try {
+			if (customerDao.getCustomer(order.getCustomerId())!=null) {
+				if (haulierDao.getHaulier(order.getHaulierId())!=null) {
+					if (productDao.getProduct(order.getProductId())!=null) {
+						return dao.addOrder(order);
+					} else {
+						System.err.println("Product Id not found");
+					}
+				} else {
+					System.err.println("Haulier Id not found");
+				}
+			} else {
+				System.err.println("Customer Id not found");
+			}
+		} catch (Exception e) {
+			System.err.println("Something went wrong!!!");
+		}
+		return false;
+	}
+
+	@Override
+	public OrderBean getOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.getOrder(orderNo);
+	}
+
+	@Override
+	public List<OrderBean> getAllOrders() {
+		// TODO Auto-generated method stub
+		return dao.getAllOrders();
+	}
+
+	@Override
+	public boolean deleteOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteOrder(orderNo);
+	}
+
+	@Override
+	public boolean updateOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return dao.updateOrder(order);
+	}
+
+}

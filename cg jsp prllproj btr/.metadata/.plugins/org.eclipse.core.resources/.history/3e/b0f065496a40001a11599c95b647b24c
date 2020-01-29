@@ -1,0 +1,77 @@
+package com.cg.forestmanagementspringrest.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.cg.forestmanagementspringrest.config.ORMConfig;
+import com.cg.forestmanagementspringrest.dao.HaulierDao;
+import com.cg.forestmanagementspringrest.dto.HaulierBean;
+import com.cg.forestmanagementspringrest.exceptions.ForestryException;
+import com.cg.forestmanagementspringrest.testormconfig.SpringRestTestConfig;
+
+@SpringJUnitConfig(classes= {SpringRestTestConfig.class, ORMConfig.class})
+class HaulierServiceImplTest {	
+		@Autowired
+		public HaulierService haulierService;
+		
+		HaulierBean haulierBean;
+		
+		@Test
+		void testAddHaulier() {
+			try {
+				haulierBean = new HaulierBean();
+				haulierBean.setHaulierId("5415");
+				haulierBean.setHaulierName("priya");
+				haulierBean.setStreetAddress1("ts");
+				haulierBean.setStreetAddress2("hs");
+				haulierBean.setTown("palamaner");
+				haulierBean.setPincode("517241");
+				haulierBean.setEmail("bhaavan@gmail.com");
+				haulierBean.setPhoneNumber("9550228395");
+				boolean insertCheck = haulierService.addHaulier(haulierBean);
+				assertEquals(insertCheck, true);
+			}catch (Exception e) {
+				assertThrows(ForestryException.class, ()->{
+					haulierService.addHaulier(haulierBean);
+				});
+			}
+		}
+
+		@Test
+		void testGetHaulier() {
+			HaulierBean haulier = haulierService.getHaulier("222");
+			assertNotNull(haulier);
+		}
+
+		@Test
+		void testGetAllHauliers() {
+			List<HaulierBean> hauliersList = haulierService.getAllHauliers();
+			assertNotNull(hauliersList);
+		}
+
+		@Test
+		void testDeleteHaulier() {
+			boolean deleteCheck = haulierService.deleteHaulier("565");
+			assertEquals(deleteCheck,true);
+		}
+
+		@Test
+		void testUpdateHaulier() {
+			haulierBean = new HaulierBean();
+			haulierBean.setHaulierId("222");
+			haulierBean.setHaulierName("syamala");
+			haulierBean.setStreetAddress1("sainagar");
+			haulierBean.setStreetAddress2("street");
+			haulierBean.setTown("vellore");
+			haulierBean.setPincode("547125");
+			haulierBean.setEmail("syamalab@gmail.com");
+			haulierBean.setPhoneNumber("9550316616");
+			boolean updateCheck = haulierService.updateHaulier("222", haulierBean);
+			assertEquals(updateCheck, true);
+		}
+}

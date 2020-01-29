@@ -1,0 +1,225 @@
+package com.cg.forestrymanagementjdbc.controller;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.cg.forestrymanagementjdbc.bean.CustomerBean;
+import com.cg.forestrymanagementjdbc.bean.OrderBean;
+import com.cg.forestrymanagementjdbc.factory.CustomerFactory;
+import com.cg.forestrymanagementjdbc.factory.OrderFactory;
+import com.cg.forestrymanagementjdbc.main.MainForestry;
+import com.cg.forestrymanagementjdbc.service.CustomerService;
+import com.cg.forestrymanagementjdbc.service.OrderService;
+import com.cg.forestrymanagementjdbc.validations.Validations;
+
+public class OrderController {
+	public void order() {
+		OrderService services = OrderFactory.instanceofOrderServices();
+		Scanner sc = new Scanner(System.in);
+		OrderBean bean = new OrderBean();
+		Validations validations = new Validations();
+		while (true) {
+			System.out.println("Enter 1 to insert order data");
+			System.out.println("Enter 2 to delete order data");
+			System.out.println("Enter 3 to get order data");
+			System.out.println("Enter 4 to get all order data");
+			System.out.println("Enter 5 to update order  data");
+			System.out.println("Enter 6 to return to  home");
+			String choice = sc.next();
+			Pattern pattern = Pattern.compile("^[1-6]{1}$");
+			OrderBean orderBean = new OrderBean();
+			boolean isValidChoice = true;
+			do {
+				Matcher matcher = pattern.matcher(choice);
+				if (matcher.matches()) {
+					isValidChoice = false;
+				} else {
+					System.out.println("Please Enter valid choice");
+					choice = sc.next();
+				}
+			} while (isValidChoice);
+
+			switch (Integer.parseInt(choice)) {
+			case 1:
+				try {
+					System.out.println("Enter order no");
+					String orderNo = sc.next();
+					boolean isValidId = validations.idValidation(orderNo);
+					while (!isValidId) {
+						System.out.println("Please enter haulier Id again");
+						orderNo = sc.next();
+						if (validations.idValidation(orderNo)) {
+							break;
+						}
+					}
+					orderBean.setOrderNo(Integer.parseInt(orderNo));
+					System.out.println("Enter customer id");
+					String customerId = sc.next();
+					boolean isValidName = validations.idValidation(customerId);
+					while (!isValidName) {
+						System.out.println("Please enter name again");
+						customerId = sc.next();
+						if (validations.idValidation(customerId)) {
+							break;
+						}
+					}
+					orderBean.setCustomerId(Integer.parseInt(customerId));
+					System.out.println("Enter product id");
+					String productId = sc.next();
+					boolean isValidName1 = validations.idValidation(productId);
+					while (!isValidName1) {
+						System.out.println("Please enter id again");
+						productId = sc.next();
+						if (validations.idValidation(productId)) {
+							break;
+						}
+					}
+					orderBean.setProductId(Integer.parseInt(productId));
+					System.out.println("Enter haulier id");
+					String haulierId = sc.next();
+					boolean isValidName2 = validations.idValidation(haulierId);
+					while (!isValidName2) {
+						System.out.println("Please enter id again");
+						haulierId = sc.next();
+						if (validations.idValidation(haulierId)) {
+							break;
+						}
+					}
+					orderBean.setHaulierId(Integer.parseInt(haulierId));
+					System.out.println("Enter delivery date(yyyy-mm-dd)");
+					String deliveryDate = sc.next();
+					boolean isValidDate = validations.dateValidation(deliveryDate);
+					while (!isValidDate) {
+						System.out.println("Please enter date again(yyyy-mm-dd)");
+						deliveryDate = sc.next();
+						if (validations.dateValidation(deliveryDate)) {
+							break;
+						}
+					}
+					orderBean.setDeliveryDate(deliveryDate);
+					System.out.println("Enter quantity");
+					String quantity = sc.next();
+					boolean isValid = validations.idValidation(quantity);
+					while (!isValid) {
+						System.out.println("Please enter date again");
+						quantity = sc.next();
+						if (validations.idValidation(quantity)) {
+							break;
+						}
+					}
+					orderBean.setQuantity(Integer.parseInt(quantity));
+					boolean check = services.insertOrder(orderBean);
+					if (check) {
+						System.out.println("order added");
+					} else {
+						System.out.println("Id is repeated");
+					}
+				} catch (Exception e) {
+					System.out.println("order cannot be added");
+				}
+				break;
+			case 2:
+				System.out.println("Enter id to delete order");
+				try {
+					int choicetodelete = sc.nextInt();
+					if (services.deleteOrder(choicetodelete)) {
+						System.out.println("order deleted");
+					} else {
+						System.out.println("order not found to delete");
+					}
+				} catch (Exception e) {
+					System.out.println("Order no is invalid");
+				}
+				break;
+			case 3:
+				System.out.println("Enter no to search order");
+				try {
+					int cid = sc.nextInt();
+					if (bean != null) {
+						OrderBean orderBean1 = services.orderLogin(cid);
+						// System.out.println("Order No : " + orderBean1.getOrderNo() );
+						System.out.println("Customer Id : " + orderBean1.getCustomerId());
+						System.out.println("Product Id : " + orderBean1.getProductId());
+						System.out.println("Haulier Id : " + orderBean1.getHaulierId());
+						System.out.println("Delivery date : " + orderBean1.getDeliveryDate());
+						System.out.println("Quantity : " + orderBean1.getQuantity());
+						System.out.println();
+					}
+				} catch (Exception e) {
+					System.out.println("CustomerId is invalid or not found");
+				}
+				break;
+			case 4:
+				System.out.println("Order Details : ");
+				try {
+					List<OrderBean> order = services.getAllOrders();
+					if (order != null) {
+						for (OrderBean orderBean2 : order) {
+							System.out.println("Order No : " + orderBean2.getOrderNo());
+							System.out.println("Customer Id : " + orderBean2.getCustomerId());
+							System.out.println("Product Id : " + orderBean2.getProductId());
+							System.out.println("Haulier Id : " + orderBean2.getHaulierId());
+							System.out.println("Delivery date : " + orderBean2.getDeliveryDate());
+							System.out.println("Quantity : " + orderBean2.getQuantity());
+							System.out.println();
+						}
+					}
+				} catch (Exception e) {
+					System.out.println("No Customers found");
+				}
+				break;
+			case 5:
+				System.out.println("Enter no to modify order data ");
+				try {
+					bean = new OrderBean();
+					int orderNo1 = sc.nextInt();
+					List<OrderBean> order2 = services.getAllOrders();
+					boolean isupdate = false;
+					for (OrderBean orderBean2 : order2) {
+						if (orderBean2.getOrderNo() == orderNo1) {
+							isupdate = true;
+						}
+					}
+					System.out.println("Enter new customer id");
+					String newCustomerId = sc.next();
+					boolean isValidNewId = validations.idValidation(newCustomerId);
+					while (!isValidNewId) {
+						System.out.println("Please enter customer id again");
+						newCustomerId = sc.next();
+						if (validations.nameValidation(newCustomerId)) {
+							break;
+						}
+					}
+					bean.setCustomerId(Integer.parseInt(newCustomerId));
+					System.out.println("Enter new product id");
+					String newProductId = sc.next();
+					boolean isValidNewProductId = validations.idValidation(newProductId);
+					while (!isValidNewProductId) {
+						System.out.println("Please enter customer id again");
+						newProductId = sc.next();
+						if (validations.nameValidation(newProductId)) {
+							break;
+						}
+					}
+					bean.setProductId(Integer.parseInt(newProductId));
+					boolean check1 = services.updateOrder(orderNo1, bean);
+					if (check1) {
+						System.out.println("Order data updated succesfully");
+					} else {
+						System.out.println("order no not found to update");
+					}
+				} catch (Exception e) {
+					System.out.println("order No not found");
+				}
+				break;
+			case 6:
+				MainForestry.home();
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}

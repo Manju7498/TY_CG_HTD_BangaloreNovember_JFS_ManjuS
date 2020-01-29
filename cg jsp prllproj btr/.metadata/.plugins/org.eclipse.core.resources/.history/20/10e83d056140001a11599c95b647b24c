@@ -1,0 +1,36 @@
+package com.cg.forestrymanagementjdbc.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.UserBean;
+
+class UserServiceImplTest {
+	private UserBean userBean=new UserBean();
+	private UserService userService=new UserServiceImpl();
+
+	@Test
+	void testUserDaoImpl() {
+		userBean.setEmail("chinni@gmail.com");
+		userBean.setPassword("gayathri@216");
+		userBean.setRole("admin");
+		boolean check=userService.addUser(userBean);
+		assertEquals(check,true);
+	}
+
+	@Test
+	void testDeleteUser() {
+		boolean check1=userService.deleteUser("chinni@gmail.com");
+		assertEquals(check1,true);
+	}
+
+	@Test
+	void testAddUser() {
+		UserBean userBean1=userService.login("manju@gmail.com","Manju@518");
+		assertNotNull(userBean1);
+	}
+
+
+}

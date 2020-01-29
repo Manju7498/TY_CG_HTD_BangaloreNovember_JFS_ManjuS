@@ -1,0 +1,32 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.UserBean;
+
+class UserDaoImplTest {
+	private UserBean userBean;
+	private UserDao userDao= new UserDaoImpl();
+	@Test
+	void testAddUser() {
+		userBean=new UserBean();
+		userBean.setEmail("gayathri@gmail.com");
+		userBean.setPassword("gayathri@216");
+		userBean.setLoginType("admin");
+		boolean check=userDao.addUser(userBean);
+		assertEquals(check,true);
+	}
+
+	@Test
+	void testLogin() {
+		
+	}
+
+	@Test
+	void testDeleteUser() {
+		
+	}
+
+}

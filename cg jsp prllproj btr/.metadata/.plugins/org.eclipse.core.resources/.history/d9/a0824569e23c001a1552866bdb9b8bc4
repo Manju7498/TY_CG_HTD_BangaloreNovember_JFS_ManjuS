@@ -1,0 +1,10 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+
+public interface UserService {
+	public UserBean login(UserBean bean);
+
+	public boolean register(UserBean bean);
+
+}
