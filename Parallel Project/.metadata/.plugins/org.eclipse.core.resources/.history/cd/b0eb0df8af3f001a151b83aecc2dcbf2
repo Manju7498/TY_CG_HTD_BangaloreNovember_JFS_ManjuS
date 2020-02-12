@@ -1,0 +1,44 @@
+package com.cg.forestrymanagementcollections.bean;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@SuppressWarnings("serial")
+public class ProductBean implements Serializable {
+	private int productId;
+	private String productName;
+	private LocalDate productOrderDate;
+	private String productDeliveryDate;
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductOrderDate() {
+		return productOrderDate;
+	}
+
+	public void setProductOrderDate(LocalDate orderdeliveryDate) {
+		this.productOrderDate = orderdeliveryDate;
+	}
+
+	public String getProductDeliveryDate() {
+		return productDeliveryDate;
+	}
+
+	public void setProductDeliveryDate(String productDeliveryDate) {
+		this.productDeliveryDate = productDeliveryDate;
+	}
+
+}

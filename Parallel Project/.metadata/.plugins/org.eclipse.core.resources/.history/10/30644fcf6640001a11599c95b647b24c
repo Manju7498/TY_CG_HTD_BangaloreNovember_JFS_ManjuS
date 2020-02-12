@@ -1,0 +1,34 @@
+package com.cg.forestrymanagementjpa.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class OrderServiceImplTest {
+
+	@Test
+	void testGetAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testOrderLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

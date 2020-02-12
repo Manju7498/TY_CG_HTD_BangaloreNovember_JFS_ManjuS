@@ -1,0 +1,114 @@
+package com.cg.forestmanagementspringrest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestmanagementspringrest.dao.HaulierDao;
+import com.cg.forestmanagementspringrest.dto.HaulierBean;
+import com.cg.forestmanagementspringrest.validations.Validations;
+
+@Service
+public class HaulierServiceImpl implements HaulierService {
+	@Autowired
+	private HaulierDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addHaulier(HaulierBean haulier) {
+		if (validations.idValidation(haulier.getHaulierId())) {
+			if (validations.nameValidation(haulier.getHaulierName())) {
+				if (validations.addressValidation(haulier.getStreetAddress1())) {
+					if (validations.addressValidation(haulier.getStreetAddress2())) {
+						if (validations.nameValidation(haulier.getTown())) {
+							if (validations.pincodeValidation(haulier.getPincode())) {
+								if (validations.emailValidation(haulier.getEmail())) {
+									if (validations.phoneNumberValidation(haulier.getPhoneNumber())) {
+										return dao.addHaulier(haulier);
+									} else {
+										System.err.println("Please enter valid phone number");
+									}
+								} else {
+									System.err.println("Please enter valid email");
+								}
+							} else {
+								System.err.println("Please enter valid pincode");
+							}
+						} else {
+							System.err.println("Please enter valid town");
+						}
+					} else {
+						System.err.println("Please enter valid address2");
+					}
+				} else {
+					System.err.println("Please enter valid address1");
+				}
+			} else {
+				System.err.println("Please enter valid name");
+			}
+		} else {
+			System.err.println("Please enter valid id");
+		}
+		return false;
+
+	}
+
+	@Override
+	public HaulierBean getHaulier(String haulierId) {
+		// TODO Auto-generated method stub
+		return dao.getHaulier(haulierId);
+	}
+
+	@Override
+	public List<HaulierBean> getAllHauliers() {
+		// TODO Auto-generated method stub
+		return dao.getAllHauliers();
+	}
+
+	@Override
+	public boolean deleteHaulier(String haulierId) {
+		// TODO Auto-generated method stub
+		return dao.deleteHaulier(haulierId);
+	}
+
+	@Override
+	public boolean updateHaulier(String haulierId, HaulierBean haulier) {
+		if (validations.idValidation(haulier.getHaulierId())) {
+			if (validations.nameValidation(haulier.getHaulierName())) {
+				if (validations.addressValidation(haulier.getStreetAddress1())) {
+					if (validations.addressValidation(haulier.getStreetAddress2())) {
+						if (validations.nameValidation(haulier.getTown())) {
+							if (validations.pincodeValidation(haulier.getPincode())) {
+								if (validations.emailValidation(haulier.getEmail())) {
+									if (validations.phoneNumberValidation(haulier.getPhoneNumber())) {
+										return dao.updateHaulier(haulierId, haulier);
+									} else {
+										System.err.println("Please enter valid phone number");
+									}
+								} else {
+									System.err.println("Please enter valid email");
+								}
+							} else {
+								System.err.println("Please enter valid pincode");
+							}
+						} else {
+							System.err.println("Please enter valid town");
+						}
+					} else {
+						System.err.println("Please enter valid address2");
+					}
+				} else {
+					System.err.println("Please enter valid address1");
+				}
+			} else {
+				System.err.println("Please enter valid name");
+			}
+		} else {
+			System.err.println("Please enter valid id");
+		}
+		return false;
+
+	}
+
+}

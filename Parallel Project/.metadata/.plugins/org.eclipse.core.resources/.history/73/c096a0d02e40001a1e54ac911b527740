@@ -1,0 +1,29 @@
+package com.cg.forestmanagementspringrest.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class UserDaoImplTest {
+
+	@Test
+	void testLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testRegister() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllUsers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+}

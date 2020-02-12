@@ -1,0 +1,27 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.UserBean;
+
+class UserDaoImplTest {
+	private UserBean userBean;
+	private UserDao userDao= new UserDaoImpl();
+	@Test
+	void testAddUser() {
+		
+	}
+
+	@Test
+	void testLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+}

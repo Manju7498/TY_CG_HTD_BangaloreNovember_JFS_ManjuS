@@ -1,0 +1,96 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.OrderDao;
+import com.cg.forestrymanagementspringboot.dto.OrderBean;
+import com.cg.forestrymanagementspringboot.validations.Validations;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+	@Autowired
+	private OrderDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addOrder(OrderBean order) {
+		if (validations.idValidation(order.getOrderNo())) {
+			if (validations.idValidation(order.getCustomerId())) {
+				if (validations.idValidation(order.getProductId())) {
+					if (validations.idValidation(order.getHaulierId())) {
+						if (validations.dateValidation(order.getDeliveryDate())) {
+							if (validations.idValidation(order.getQuantity())) {
+								return dao.addOrder(order);
+							} else {
+								System.err.println("Please enter valid quantity");
+							}
+						} else {
+							System.err.println("Please enter valid date");
+						}
+					} else {
+						System.err.println("Please enter valid haulier id");
+					}
+				} else {
+					System.err.println("Please enter valid product id");
+				}
+			} else {
+				System.err.println("Please enter valid customer id");
+			}
+		} else {
+			System.err.println("Please enter valid order id");
+		}
+		return false;
+	}
+
+	@Override
+	public OrderBean getOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.getOrder(orderNo);
+	}
+
+	@Override
+	public List<OrderBean> getAllOrders() {
+		// TODO Auto-generated method stub
+		return dao.getAllOrders();
+	}
+
+	@Override
+	public boolean deleteOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteOrder(orderNo);
+	}
+
+	@Override
+	public boolean updateOrder(String orderNo,OrderBean order) {
+		return dao.updateOrder(orderNo,order);
+		if (validations.idValidation(order.getOrderNo())) {
+		if (validations.idValidation(order.getCustomerId())) {
+			if (validations.idValidation(order.getProductId())) {
+				if (validations.idValidation(order.getHaulierId())) {
+					if (validations.dateValidation(order.getDeliveryDate())) {
+						if (validations.idValidation(order.getQuantity())) {
+							return dao.updateOrder(orderNo,order);
+						} else {
+							System.err.println("Please enter valid quantity");
+						}
+					} else {
+						System.err.println("Please enter valid date");
+					}
+				} else {
+					System.err.println("Please enter valid haulier id");
+				}
+			} else {
+				System.err.println("Please enter valid product id");
+			}
+		} else {
+			System.err.println("Please enter valid customer id");
+		}
+	} else {
+		System.err.println("Please enter valid order id");
+	}
+	return false;
+	}
+}

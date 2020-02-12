@@ -1,0 +1,49 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.CustomerBean;
+
+class CustomerDaoImplTest {
+	private CustomerBean customerBean=new CustomerBean();
+	private CustomerDao customerDao=new CustomerDaoImpl();
+
+
+	@Test
+	void testGetAllCustomers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCustomerLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		boolean deleteCheck = customerDao.deleteCustomer(8756);
+		assertEquals(deleteCheck,true);
+	}
+
+	@Test
+	void testInsertCustomer() {
+		customerBean = new CustomerBean();
+		customerBean.setCustomerId(8756);
+		customerBean.setCustomerName("priya");
+		customerBean.setStreetAddress1("ts");
+		customerBean.setStreetAddress2("hs");
+		customerBean.setTown("palamaner");
+		customerBean.setPincode(517408);
+		customerBean.setEmail("jayasri@gmail.com");
+		customerBean.setCustomerPhoneNumber(9550316616l);
+		boolean insertCheck = customerDao.insertCustomer(customerBean);
+		assertEquals(insertCheck, true);
+	}
+}

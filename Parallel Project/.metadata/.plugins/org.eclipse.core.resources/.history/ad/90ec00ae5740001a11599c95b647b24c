@@ -1,0 +1,18 @@
+package forestrymanagementselenium;
+
+import org.openqa.selenium.By;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+
+public class AdminGetAllUsers extends ForestryBaseTest {
+	@Test
+	public void adminGetAllUsers() {
+		driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/form/ul[2]/li/a")).click();
+		driver.findElement(By.name("email")).sendKeys("manju@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("Manju@518");
+		driver.findElement(By.xpath("/html/body/app-root/app-login/div/div/form/div/div[2]/div[3]/button")).click();
+		driver.findElement(By.xpath("//*[@id=\"navbarDropdown1\"]/b")).click();
+		Reporter.log("All User details",true);
+	}
+}

@@ -1,0 +1,57 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjdbc.bean.HaulierBean;
+
+class HaulierDaoImplTest {
+	private HaulierBean haulierBean=new HaulierBean();
+	private HaulierDao haulierDao=new HaulierDaoImpl();
+
+	@Test
+	void testGetAllHauliers() {
+		List<HaulierBean> hauliersList = haulierDao.getAllHauliers();
+		assertNotNull(hauliersList);
+	}
+
+	@Test
+	void testHaulierLogin() {
+		HaulierBean haulier = haulierDao.haulierLogin(544);
+		assertNotNull(haulier);
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierName("syamala");
+		haulierBean.setEmail("syamalab@gmail.com");
+		boolean updateCheck = haulierDao.updateHaulier(1, haulierBean);
+		assertEquals(updateCheck, true);
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		boolean deleteCheck = haulierDao.deleteHaulier(87);
+		assertEquals(deleteCheck,true);
+	}
+
+	@Test
+	void testInsertHaulier() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierId(874);
+		haulierBean.setHaulierName("priya");
+		haulierBean.setStreetAddress1("ts");
+		haulierBean.setStreetAddress2("hs");
+		haulierBean.setTown("palamaner");
+		haulierBean.setPostCode(517408);
+		haulierBean.setEmail("bhaavan@gmail.com");
+		haulierBean.setPhonenumber(9550316616l);
+		boolean insertCheck = haulierDao.insertHaulier(haulierBean);
+		assertEquals(insertCheck, true);
+	}
+
+}

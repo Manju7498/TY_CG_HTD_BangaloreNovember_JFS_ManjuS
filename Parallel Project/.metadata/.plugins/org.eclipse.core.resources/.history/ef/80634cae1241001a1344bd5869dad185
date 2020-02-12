@@ -1,0 +1,8 @@
+package com.capgemini.forestrymanagementcucumber.runner;
+
+import cucumber.api.CucumberOptions;
+
+@CucumberOptions()
+public class Runner {
+
+}

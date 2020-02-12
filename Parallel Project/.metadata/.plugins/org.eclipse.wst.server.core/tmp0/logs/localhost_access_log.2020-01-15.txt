@@ -1,0 +1,6 @@
+127.0.0.1 - - [15/Jan/2020:23:01:00 +0530] "GET / HTTP/1.1" 404 709
+0:0:0:0:0:0:0:1 - - [15/Jan/2020:23:01:36 +0530] "POST /forestmanagementspringrest/admin-login HTTP/1.1" 500 3572
+127.0.0.1 - - [15/Jan/2020:23:03:32 +0530] "GET / HTTP/1.1" 404 709
+0:0:0:0:0:0:0:1 - - [15/Jan/2020:23:04:11 +0530] "POST /forestmanagementspringrest/admin-login HTTP/1.1" 500 3572
+127.0.0.1 - - [15/Jan/2020:23:07:36 +0530] "GET / HTTP/1.1" 404 709
+0:0:0:0:0:0:0:1 - - [15/Jan/2020:23:08:09 +0530] "POST /forestmanagementspringrest/admin-login HTTP/1.1" 200 170

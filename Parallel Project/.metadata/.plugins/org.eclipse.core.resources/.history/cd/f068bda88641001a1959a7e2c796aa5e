@@ -1,0 +1,64 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.OrderBean;
+
+@SpringBootTest
+class OrderServiceImplTest {
+		@Autowired
+		public OrderService orderService;
+		OrderBean orderBean;
+
+		@Test
+		void testAddOrder() {
+			orderBean = new OrderBean();
+			orderBean.setOrderNo("544");
+			orderBean.setCustomerId("4154");
+			orderBean.setHaulierId("5541");
+			orderBean.setProductId("8546");
+			orderBean.setDeliveryDate("02/08/2020");
+			orderBean.setQuantity("4500");
+			boolean insertCheck = orderService.addOrder(orderBean);
+			assertEquals(insertCheck,false);
+		}
+
+		@Test
+		void testGetOrder() {
+			OrderBean orderBean = orderService.getOrder("1512");
+			assertNotNull(orderBean);
+		}
+
+		@Test
+		void testGetAllOrders() {
+			List<OrderBean> ordersList = orderService.getAllOrders();
+			assertNotNull(ordersList);
+		}
+
+		@Test
+		void testDeleteOrder() {
+			boolean deleteCheck = orderService.deleteOrder("8554");
+			assertEquals(deleteCheck, false);
+		}
+
+		@Test
+		void testUpdateOrder() {
+			orderBean = new OrderBean();
+			orderBean.setOrderNo("1512");
+			orderBean.setCustomerId("4154");
+			orderBean.setHaulierId("5541");
+			orderBean.setProductId("8546");
+			orderBean.setDeliveryDate("02/08/2028");
+			orderBean.setQuantity("4000");
+			boolean insertCheck = orderService.updateOrder("1512", orderBean);
+			assertEquals(insertCheck, true);
+		}
+
+
+}

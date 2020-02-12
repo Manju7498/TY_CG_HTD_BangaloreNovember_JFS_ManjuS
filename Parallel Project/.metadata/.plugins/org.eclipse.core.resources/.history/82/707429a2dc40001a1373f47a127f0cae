@@ -1,0 +1,72 @@
+package com.cg.forestrymanagementcollections.servicetest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.HashMap;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementcollections.bean.HaulierBean;
+import com.cg.forestrymanagementcollections.service.HaulierService;
+import com.cg.forestrymanagementcollections.service.HaulierServiceImpl;
+
+class HaulierServiceImplTest {
+
+	private HaulierBean haulierBean = new HaulierBean();
+	private HaulierService haulierService = new HaulierServiceImpl();
+
+	@BeforeEach
+	void addHaulier() {
+		haulierBean.setHaulierId(8544);
+		haulierBean.setHaulierName("manju");
+		haulierBean.setStreetAddress1("#sainagar");
+		haulierBean.setStreetAddress2("MT Road");
+		haulierBean.setTown("vellore");
+		haulierBean.setPostCode(542156);
+		haulierBean.setEmail("manju@gmail.com");
+		haulierService.addHaulier(8544, haulierBean);
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		boolean result = haulierService.deleteHaulier(8544);
+		assertEquals(result, true);
+	}
+
+	@Test
+	void testGetHaulier() {
+		HaulierBean result = haulierService.getHaulier(8544);
+		assertNotNull(result);
+	}
+
+	@Test
+	void testAddHaulier() {
+		haulierBean.setHaulierId(3244);
+		haulierBean.setHaulierName("pranitha");
+		haulierBean.setStreetAddress1("Hosa Road");
+		haulierBean.setStreetAddress2("BTM");
+		haulierBean.setTown("Synagunta");
+		haulierBean.setPostCode(548541);
+		haulierBean.setEmail("pranitha@gmail.com");
+		boolean result = haulierService.addHaulier(3244, haulierBean);
+		assertEquals(result, true);
+	}
+
+	@Test
+	void testGetAllHauliers() {
+		HashMap<Integer, HaulierBean> result = haulierService.getAllHauliers();
+		assertNotNull(result);
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		HaulierBean haulier = new HaulierBean();
+		haulier.setHaulierId(8544);
+		haulier.setHaulierName("syamala");
+		haulier.setEmail("syamala@gmail.com");
+		haulierService.updateHaulier(haulier.getHaulierId(), haulier);
+	}
+
+}

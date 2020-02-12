@@ -1,0 +1,79 @@
+package com.cg.forestrymanagementjpa.bean;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Product")
+public class ProductBean {
+	@Id
+	@Column
+	private String productId;
+	@Column
+	private String productName;
+	@Column
+	private String productOrderDate;
+	@Column
+	private String productDeliveryDate;
+//	@OneToOne(cascade = CascadeType.ALL,mappedBy = "product")
+//	private ContractBean contract;
+//	@OneToOne(cascade = CascadeType.ALL,mappedBy = "productBean")
+//	private OrderBean orders;
+	
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductOrderDate() {
+		return productOrderDate;
+	}
+
+	public void setProductOrderDate(String productOrderDate) {
+		this.productOrderDate = productOrderDate;
+	}
+
+	public String getProductDeliveryDate() {
+		return productDeliveryDate;
+	}
+
+	public void setProductDeliveryDate(String productDeliveryDate) {
+		this.productDeliveryDate = productDeliveryDate;
+	}
+
+//	public ContractBean getContract() {
+//		return contract;
+//	}
+//
+//	public void setContract(ContractBean contract) {
+//		this.contract = contract;
+//	}
+//
+//	public OrderBean getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(OrderBean orders) {
+//		this.orders = orders;
+//	}
+
+}

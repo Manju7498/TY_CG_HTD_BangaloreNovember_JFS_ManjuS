@@ -1,0 +1,81 @@
+package com.cg.forestrymanagementcollections.dao;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.cg.forestrymanagementcollections.bean.UserBean;
+import com.cg.forestrymanagementcollections.exceptions.ValidationExceptions;
+
+public class UserDaoImpl implements UserDao {
+	private HashMap<String, UserBean> userBeans = new HashMap<String, UserBean>();
+	Set<Entry<String, UserBean>> set = userBeans.entrySet();
+	UserBean user = new UserBean();
+
+	@Override
+	public boolean addUser(String email, UserBean user) {
+		for (Entry<String, UserBean> entry : set) {
+			try {
+				if (entry.getKey() == email) {
+					return false;
+				}
+			} catch (Exception e) {
+				throw new ValidationExceptions();
+			}
+		}
+		userBeans.put(email, user);
+		return true;
+	}
+	@Override
+	public boolean addAdmin(String email, UserBean user) {
+		for (Entry<String, UserBean> entry : set) {
+			try {
+				if (entry.getKey() == email) {
+					return false;
+				}
+			} catch (Exception e) {
+				throw new ValidationExceptions();
+			}
+		}
+		userBeans.put(email, user);
+		return true;
+	}
+	
+	@Override
+	public boolean signIn(UserBean user) {
+		try {
+			if (userBeans.containsKey(user.getEmail()) == true) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new ValidationExceptions();
+		}
+		return false;
+	}
+
+	public boolean login(UserBean user) {
+		try {
+			if (user.getEmail() != null && user.getPassword() != null) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new ValidationExceptions();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteUser(String email) {
+		for (Entry<String, UserBean> entry : set) {
+			try {
+				if (entry.getKey().equals(email)) {
+					userBeans.remove(email);
+					return true;
+				}
+			} catch (Exception e) {
+				throw new ValidationExceptions();
+			}
+		}
+		return false;
+	}
+}

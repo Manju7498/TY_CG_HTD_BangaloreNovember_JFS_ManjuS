@@ -1,0 +1,63 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cg.forestrymanagementspringboot.dto.HaulierBean;
+import com.cg.forestrymanagementspringboot.dto.OrderBean;
+@SpringBootTest
+class OrderDaoImplTest {
+	@Autowired
+	public OrderDao orderDao;
+	OrderBean orderBean;
+	
+	@Test
+	void testAddOrder() {
+		orderBean = new OrderBean();
+		orderBean.setOrderNo("544");
+		orderBean.setCustomerId("456");
+		orderBean.setHaulierId("563");
+		orderBean.setProductId("546");
+		orderBean.setDeliveryDate("02/08/2020");
+		orderBean.setQuantity("4500");
+		boolean insertCheck = orderDao.addOrder(orderBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testGetOrder() {
+		OrderBean orderBean = orderDao.getOrder("1512");
+		assertNotNull(orderBean);
+	}
+
+	@Test
+	void testGetAllOrders() {
+		List<OrderBean> ordersList = orderDao.getAllOrders();
+		assertNotNull(ordersList);
+	}
+
+	@Test
+	void testDeleteOrder() {
+		boolean deleteCheck = orderDao.deleteOrder("8554");
+		assertEquals(deleteCheck, false);
+	}
+
+	@Test
+	void testUpdateOrder() {
+		orderBean = new OrderBean();
+		orderBean.setOrderNo("1512");
+		orderBean.setCustomerId("678");
+		orderBean.setProductId("532");
+		orderBean.setHaulierId("6546");
+		orderBean.setDeliveryDate("02/08/2028");
+		orderBean.setQuantity("4000");
+		boolean insertCheck = orderDao.updateOrder("1512", orderBean);
+		assertEquals(insertCheck, true);
+	}
+
+}

@@ -1,0 +1,141 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.Scanner;
+
+import com.cg.forestrymanagementjdbc.bean.ContractBean;
+import com.cg.forestrymanagementjdbc.exceptions.ForestryExceptions;
+
+public class ContractDaoImpl implements ContractDao {
+	FileReader reader;
+	Properties prop;
+	ContractBean bean;
+	Scanner sc = new Scanner(System.in);
+
+	public ContractDaoImpl() {
+		try {
+			reader = new FileReader("forestrydatabasemanagement.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Override
+	public boolean addContract(ContractBean bean) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertContractQuery"));
+
+		) {
+			pstmt.setInt(1, bean.getContractNo());
+			pstmt.setInt(2, bean.getCustomerId());
+			pstmt.setInt(3, bean.getProductId());
+			pstmt.setInt(4, bean.getHaulierId());
+			pstmt.setString(5, bean.getDeliveryDate());
+			pstmt.setString(6,bean.getDeliveryDay());
+			pstmt.setInt(7, bean.getQuantity());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new ForestryExceptions();
+		}
+		return false;
+	}
+
+	@Override
+	public List<ContractBean> getAllContracts() {
+		List<ContractBean> list = new ArrayList<ContractBean>();
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(prop.getProperty("allContractsQuery"));) {
+			while (rs.next()) {
+				bean = new ContractBean();
+				bean.setContractNo(rs.getInt(1));
+				bean.setCustomerId(rs.getInt(2));
+				bean.setProductId(rs.getInt(3));
+				bean.setHaulierId(rs.getInt(4));
+				bean.setDeliveryDate(rs.getString(5));
+				bean.setDeliveryDay(rs.getString(6));
+				bean.setQuantity(rs.getInt(7));
+				list.add(bean);
+			}
+			return list;
+		} catch (Exception e) {
+			throw new ForestryExceptions();
+		}
+	}
+
+	@Override
+	public boolean deleteContract(int contractNo) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteContractQuery"));) {
+			pstmt.setInt(1, contractNo);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new ForestryExceptions();
+		}
+		return false;
+	}
+
+	@Override
+	public ContractBean getContract(int contractNo) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("loginContractQuery"))) {
+			pstmt.setInt(1, contractNo);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				bean = new ContractBean();
+				bean.setContractNo(rs.getInt(1));
+				bean.setCustomerId(rs.getInt(2));
+				bean.setProductId(rs.getInt(3));
+				bean.setHaulierId(rs.getInt(4));
+				bean.setDeliveryDate(rs.getString(5));
+				bean.setDeliveryDay(rs.getString(6));
+				bean.setQuantity(rs.getInt(7));
+				return bean;
+			}
+
+		} catch (Exception e) {
+			throw new ForestryExceptions();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean updateContract(int contractNo, ContractBean bean) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("updateCustomerIdQuery1"));) {
+			pstmt.setInt(1, bean.getCustomerId());
+			pstmt.setInt(2, bean.getProductId());
+			pstmt.setInt(3, contractNo);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new ForestryExceptions();
+		}
+		return false;
+	}
+
+}

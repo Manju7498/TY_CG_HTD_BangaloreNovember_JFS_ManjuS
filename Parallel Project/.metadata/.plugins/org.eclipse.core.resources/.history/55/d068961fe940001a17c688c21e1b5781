@@ -1,0 +1,251 @@
+package com.cg.forestrymanagementjdbc.controller;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.cg.forestrymanagementjdbc.bean.CustomerBean;
+import com.cg.forestrymanagementjdbc.bean.HaulierBean;
+import com.cg.forestrymanagementjdbc.factory.CustomerFactory;
+import com.cg.forestrymanagementjdbc.factory.HaulierFactory;
+import com.cg.forestrymanagementjdbc.main.MainForestry;
+import com.cg.forestrymanagementjdbc.service.CustomerService;
+//import com.cg.forestrymanagementjdbc.main.MainForestry;
+import com.cg.forestrymanagementjdbc.service.HaulierService;
+import com.cg.forestrymanagementjdbc.validations.Validations;
+
+public class HaulierController {
+	public void haulier() {
+		HaulierService services = HaulierFactory.instanceofHaulierServices();
+		Scanner scanner = new Scanner(System.in);
+		HaulierBean bean = new HaulierBean();
+		Validations validations = new Validations();
+		while (true) {
+			System.out.println("Enter 1 to insert haulier data");
+			System.out.println("Enter 2 to delete haulier data");
+			System.out.println("Enter 3 to get haulier data");
+			System.out.println("Enter 4 to get all haulier data");
+			System.out.println("Enter 5 to update haulier  data");
+			System.out.println("Enter 6 to return to  home");
+			String choice = scanner.next();
+			Pattern pattern = Pattern.compile("^[1-6]{1}$");
+			HaulierBean haulierBean = new HaulierBean();
+			boolean isValidChoice = true;
+			do {
+				Matcher matcher = pattern.matcher(choice);
+				if (matcher.matches()) {
+					isValidChoice = false;
+				} else {
+					System.out.println("Please Enter valid choice");
+					choice = scanner.next();
+				}
+			} while (isValidChoice);
+
+			switch (Integer.parseInt(choice)) {
+			case 1:
+				try {
+					System.out.println("Enter haulier id");
+					String haulierId = scanner.next();
+					boolean isValidId = validations.idValidation(haulierId);
+					while (!isValidId) {
+						System.out.println("Please enter haulier Id again");
+						haulierId = scanner.next();
+						if (validations.idValidation(haulierId)) {
+							break;
+						}
+					}
+					haulierBean.setHaulierId(Integer.parseInt(haulierId));
+					System.out.println("Enter haulier name");
+					String haulierName = scanner.next();
+					boolean isValidName = validations.nameValidation(haulierName);
+					while (!isValidName) {
+						System.out.println("Please enter name again");
+						haulierName = scanner.next();
+						if (validations.nameValidation(haulierName)) {
+							break;
+						}
+					}
+					haulierBean.setHaulierName(haulierName);
+					System.out.println("Enter street address1");
+					String streetAddress1 = scanner.next();
+					boolean isValidAddress1 = validations.addressValidation(streetAddress1);
+					while (!isValidAddress1) {
+						System.out.println("Please enter address1 again");
+						streetAddress1 = scanner.next();
+						if (validations.nameValidation(streetAddress1)) {
+							break;
+						}
+					}
+					haulierBean.setStreetAddress1(streetAddress1);
+					System.out.println("Enter street address2");
+					String streetAddress2 = scanner.next();
+					boolean isValidAddress2 = validations.addressValidation(streetAddress2);
+					while (!isValidAddress2) {
+						System.out.println("Please enter address2 again");
+						streetAddress1 = scanner.next();
+						if (validations.nameValidation(streetAddress1)) {
+							break;
+						}
+					}
+					haulierBean.setStreetAddress2(streetAddress2);
+					System.out.println("Enter town");
+					String town = scanner.next();
+					boolean isValidTown = validations.nameValidation(town);
+					while (!isValidTown) {
+						System.out.println("Please enter town again");
+						town = scanner.next();
+						if (validations.nameValidation(town)) {
+							break;
+						}
+					}
+					haulierBean.setTown(town);
+					System.out.println("Enter postal code");
+					String postcode = scanner.next();
+					boolean isValidPin = validations.pincodeValidation(postcode);
+					while (!isValidPin) {
+						System.out.println("Please enter postcode again");
+						postcode = scanner.next();
+						if (validations.pincodeValidation(postcode)) {
+							break;
+						}
+					}
+					haulierBean.setPostcode(Integer.parseInt(postcode));
+					System.out.println("Enter email");
+					String email = scanner.next();
+					boolean isValidEmail = validations.emailValidation(email);
+					while (!isValidEmail) {
+						System.out.println("Please enter email again");
+						email = scanner.next();
+						if (validations.emailValidation(email)) {
+							break;
+						}
+					}
+					haulierBean.setEmail(email);
+					System.out.println("Enter telephone");
+					String phoneNumber = scanner.next();
+					boolean isValidPhoneNo = validations.phoneNumberValidation(phoneNumber);
+					while (!isValidPhoneNo) {
+						System.out.println("Please enter phone number again");
+						phoneNumber = scanner.next();
+						if (validations.phoneNumberValidation(phoneNumber)) {
+							break;
+						}
+					}
+					haulierBean.setPhonenumber(Long.parseLong(phoneNumber));
+					boolean check = services.insertHaulier(haulierBean);
+					if (check) {
+						System.out.println("haulier added");
+					} else {
+						System.out.println("Id is repeated");
+					}
+				} catch (Exception e) {
+					System.out.println("haulier cannot be added");
+				}
+				break;
+			case 2:
+				System.out.println("Enter id to delete haulier");
+				try {
+					int choicetodelete = scanner.nextInt();
+					if (services.deleteHaulier(choicetodelete)) {
+						System.out.println("haulier deleted");
+					} else {
+						System.out.println("haulier id not found to delete");
+					}
+				} catch (Exception e) {
+					System.out.println("haulier id is invalid");
+				}
+				break;
+			case 3:
+				System.out.println("Enter id to search haulier");
+				try {
+					int cid = scanner.nextInt();
+					if (bean != null) {
+						HaulierBean haulierBean1 = services.haulierLogin(cid);
+						System.out.println("Haulier name : " + haulierBean1.getHaulierName());
+						System.out.println("Haulier address1 : " + haulierBean1.getStreetAddress1());
+						System.out.println("Haulier address2 : " + haulierBean1.getStreetAddress2());
+						System.out.println("Haulier town : " + haulierBean1.getTown());
+						System.out.println("Haulier pincode : " + haulierBean1.getPostcode());
+						System.out.println("Haulier email : " + haulierBean1.getEmail());
+						System.out.println("Haulier mobile number : " + haulierBean1.getPhonenumber());
+						System.out.println();
+					}
+				} catch (Exception e) {
+					System.out.println("CustomerId is invalid or not found");
+				}
+				break;
+			case 4:
+				System.out.println("Haulier Details : ");
+				try {
+					List<HaulierBean> haulier = services.getAllHauliers();
+					if (haulier != null) {
+						for (HaulierBean haulierBean2 : haulier) {
+							System.out.println("Haulier id : " + haulierBean2.getHaulierId());
+							System.out.println("Haulier name : " + haulierBean2.getHaulierName());
+							System.out.println("Haulier address1 : " + haulierBean2.getStreetAddress1());
+							System.out.println("Haulier address2 : " + haulierBean2.getStreetAddress2());
+							System.out.println("Haulier town : " + haulierBean2.getTown());
+							System.out.println("Haulier pincode : " + haulierBean2.getPostcode());
+							System.out.println("Haulier email : " + haulierBean2.getEmail());
+							System.out.println("Haulier mobile number : " + haulierBean2.getPhonenumber());
+							System.out.println();
+						}
+					}
+				} catch (Exception e) {
+					System.out.println("No hauliers found");
+				}
+				break;
+			case 5:
+				System.out.println("Enter id to modify haulier data ");
+				try {
+					bean = new HaulierBean();
+					int haulierId1 = scanner.nextInt();
+					List<HaulierBean> haulier2 = services.getAllHauliers();
+					boolean isupdate = false;
+					for (HaulierBean haulierBean2 : haulier2) {
+						if (haulierBean2.getHaulierId() == haulierId1) {
+							isupdate = true;
+						}
+					}
+					System.out.println("Enter haulier name");
+					String newHaulierName = scanner.next();
+					boolean isValidNewName = validations.nameValidation(newHaulierName);
+					while (!isValidNewName) {
+						System.out.println("Please enter haulier name again");
+						newHaulierName = scanner.next();
+						if (validations.nameValidation(newHaulierName)) {
+							break;
+						}
+					}
+					bean.setHaulierName(newHaulierName);
+					System.out.println("Enter haulier email");
+					String newHaulierEmail = scanner.next();
+					boolean isValidNewEmail = validations.emailValidation(newHaulierEmail);
+					while (!isValidNewEmail) {
+						System.out.println("Please enter customer email again");
+						newHaulierEmail = scanner.next();
+						if (validations.emailValidation(newHaulierEmail)) {
+							break;
+						}
+					}
+					bean.setEmail(newHaulierEmail);
+					boolean check1 = services.updateHaulier(haulierId1, bean);
+					if (check1) {
+						System.out.println("haulier data updated succesfully");
+					} else {
+						System.out.println("haulier not found to update");
+					}
+				} catch (Exception e) {
+					System.out.println("Id not found");
+				}
+				break;
+			case 6:
+				MainForestry.home();
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}

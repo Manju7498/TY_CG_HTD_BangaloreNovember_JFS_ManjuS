@@ -1,0 +1,61 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.OrderDao;
+import com.cg.forestrymanagementspringboot.dto.OrderBean;
+import com.cg.forestrymanagementspringboot.validations.Validations;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+	@Autowired
+	private OrderDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addOrder(OrderBean order) {
+//		if (validations.idValidation(order.getOrderNo()) && validations.idValidation(order.getCustomerId())
+//				&& validations.idValidation(order.getProductId()) && validations.idValidation(order.getHaulierId())
+//				&& validations.dateValidation(order.getDeliveryDate())
+//				&& validations.idValidation(order.getQuantity())) {
+			return dao.addOrder(order);
+//		} else {
+//			System.err.println("Please enter valid information");
+//		}
+//		return false;
+	}
+
+	@Override
+	public OrderBean getOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.getOrder(orderNo);
+	}
+
+	@Override
+	public List<OrderBean> getAllOrders() {
+		// TODO Auto-generated method stub
+		return dao.getAllOrders();
+	}
+
+	@Override
+	public boolean deleteOrder(String orderNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteOrder(orderNo);
+	}
+
+	@Override
+	public boolean updateOrder(String orderNo,OrderBean order) {
+//		if (validations.idValidation(order.getOrderNo()) && validations.idValidation(order.getCustomerId())
+//				&& validations.idValidation(order.getProductId()) && validations.idValidation(order.getHaulierId())
+//				&& validations.dateValidation(order.getDeliveryDate())
+//				&& validations.idValidation(order.getQuantity())) {
+			return dao.updateOrder(orderNo,order);
+//		} else {
+//			System.err.println("Please enter valid information");
+//		}
+//		return false;
+	}
+}

@@ -1,0 +1,93 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.ContractBean;
+import com.cg.forestrymanagementjpa.bean.CustomerBean;
+import com.cg.forestrymanagementjpa.bean.HaulierBean;
+import com.cg.forestrymanagementjpa.bean.ProductBean;
+
+class ContractDaoImplTest {
+	private static ContractBean contractBean;
+	private static ContractDao contractDao = new ContractDaoImpl();
+	static CustomerDao customerDao = new CustomerDaoImpl();
+	static HaulierDao haulierDao = new HaulierDaoImpl();
+	static ProductDao ProductDao = new ProductDaoImpl();
+
+	@BeforeAll
+	@Test
+	static void testInsertContractDuplicate() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(8554);
+		CustomerBean customerBean = customerDao.customerLogin(8752);
+		contractBean.setCustomer(customerBean);
+		HaulierBean haulierBean = haulierDao.haulierLogin(1);
+		contractBean.setHaulier(haulierBean);
+		ProductBean productBean = ProductDao.productLogin(2);
+		contractBean.setProduct(productBean);
+		contractBean.setDeliveryDate("02/05/2020");
+		contractBean.setDeliveryDay("friday");
+		contractBean.setQuantity(5000);
+		boolean insertCheck = contractDao.insertContract(contractBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	static void testInsertContract() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(8557);
+		CustomerBean customerBean = customerDao.customerLogin(8745);
+		contractBean.setCustomer(customerBean);
+		HaulierBean haulierBean = haulierDao.haulierLogin(1);
+		contractBean.setHaulier(haulierBean);
+		ProductBean productBean = ProductDao.productLogin(2);
+		contractBean.setProduct(productBean);
+		contractBean.setDeliveryDate("02/08/2020");
+		contractBean.setDeliveryDay("monday");
+		contractBean.setQuantity(5000);
+		boolean insertCheck = contractDao.insertContract(contractBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> contractsList = contractDao.getAllContracts();
+		assertNotNull(contractsList);
+	}
+
+	@Test
+	void testDeleteContract() {
+		boolean deleteCheck = contractDao.deleteContract(8557);
+		assertEquals(deleteCheck, true);
+	}
+
+
+	@Test
+	void testContractLogin() {
+		ContractBean contractBean=contractDao.contractLogin(1);
+		assertNotNull(contractBean);
+	}
+
+	@Test
+	void testUpdateContract() {
+		contractBean = new ContractBean();
+		contractBean.setContractNo(8557);
+		CustomerBean customerBean = customerDao.customerLogin(8745);
+		contractBean.setCustomer(customerBean);
+		HaulierBean haulierBean = haulierDao.haulierLogin(1);
+		contractBean.setHaulier(haulierBean);
+		ProductBean productBean = ProductDao.productLogin(1);
+		contractBean.setProduct(productBean);
+		contractBean.setDeliveryDate("02/08/2020");
+		contractBean.setDeliveryDay("monday");
+		contractBean.setQuantity(5000);
+		boolean insertCheck = contractDao.insertContract(contractBean);
+		assertEquals(insertCheck, true);
+	}
+
+}

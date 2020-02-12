@@ -1,0 +1,49 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CustomerDaoImplTest {
+
+	@Test
+	void testCustomerDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllCustomers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCustomerLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateEmail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdatePhoneNumber() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertCustomer() {
+		fail("Not yet implemented");
+	}
+
+}

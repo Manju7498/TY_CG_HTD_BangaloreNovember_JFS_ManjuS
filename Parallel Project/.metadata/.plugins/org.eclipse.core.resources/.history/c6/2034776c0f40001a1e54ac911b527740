@@ -1,0 +1,23 @@
+package com.cg.forestrymanagementjdbc.dao;
+
+import org.junit.jupiter.api.Test;
+
+class UserDaoImplTest {
+
+	@Test
+	void testUserDaoImpl() {
+		
+	}
+
+	@Test
+	void testDeleteUser() {
+		
+	}
+
+	@Test
+	void testAddUser() {
+		
+	}
+
+
+}

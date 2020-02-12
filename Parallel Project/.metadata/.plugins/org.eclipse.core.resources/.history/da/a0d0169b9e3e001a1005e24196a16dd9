@@ -1,0 +1,64 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.cg.forestrymanagementjpa.bean.CustomerBean;
+import com.cg.forestrymanagementjpa.bean.UserBean;
+
+class CustomerDaoImplTest {
+	public static CustomerBean customerBean;
+	public static CustomerDao customerDao=new CustomerDaoImpl();
+	@Test
+	void testGetAllCustomers() {
+		List<CustomerBean> customersList=customerDao.getAllCustomers();
+		assertNotNull(customersList);
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		boolean deleteCheck=customerDao.deleteCustomer(2);
+		assertEquals(deleteCheck,false);
+	}
+	@Test
+	 static void testInsertCustomer() {
+		customerBean=new CustomerBean();
+		customerBean.setCustomerId(5456);
+		customerBean.setCustomerName("Jayasri");
+		customerBean.setStreetAddress1("ts");
+		customerBean.setStreetAddress2("hs");
+		customerBean.setTown("palamaner");
+		customerBean.setPincode(517408);
+		customerBean.setEmail("jayasri@gmail.com");
+		customerBean.setCustomerPhoneNumber(9550316616l);
+		boolean insertCheck=customerDao.insertCustomer(customerBean);
+		assertEquals(insertCheck,true);
+	}
+
+	@Test
+	void testCustomerLogin() {
+			CustomerBean customer=customerDao.customerLogin(1);
+			
+			assertNotNull(customer);
+	}
+	@Test
+	 static void testUpdateCustomer() {
+		customerBean=new CustomerBean();
+		customerBean.setCustomerName("syamala");
+		customerBean.setStreetAddress1("sainagar");
+		customerBean.setStreetAddress2("street");
+		customerBean.setTown("vellore");
+		customerBean.setPincode(547125);
+		customerBean.setEmail("syamala@gmail.com");
+		customerBean.setCustomerPhoneNumber(9550316616l);
+		boolean updateCheck=customerDao.updateCustomer(5456,customerBean);
+		assertEquals(updateCheck,true);
+	}
+
+}

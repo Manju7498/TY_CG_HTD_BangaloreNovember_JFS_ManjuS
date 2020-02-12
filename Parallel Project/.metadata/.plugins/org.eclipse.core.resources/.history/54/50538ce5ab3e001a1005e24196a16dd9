@@ -1,0 +1,64 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.ContractBean;
+import com.cg.forestrymanagementjpa.bean.CustomerBean;
+
+class ContractDaoImplTest {
+	private static ContractBean contractBean;
+	static CustomerBean customerBean;
+	private static ContractDao contractDao = new ContractDaoImpl();
+	static CustomerDao customerDao=new CustomerDaoImpl();
+
+	@BeforeAll
+	@Test
+	static void testInsertCustomerDuplicate() {
+		contractBean = new ContractBean();
+		customerBean=new CustomerBean();
+		contractBean.setContractNo(8554);
+		CustomerBean customerBean1=customerDao.getCustomerId(8756);
+		contractBean.setCustomer(customer);
+		contractBean.setStreetAddress1("ts");
+		contractBean.setStreetAddress2("hs");
+		contractBean.setTown("palamaner");
+		contractBean.setPincode(517408);
+		contractBean.setEmail("jayasri@gmail.com");
+		contractBean.setCustomerPhoneNumber(9550316616l);
+		boolean insertCheck = customerDao.insertCustomer(contractBean);
+		assertEquals(insertCheck, true);
+	}
+
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> contractsList = contractDao.getAllContracts();
+		assertNotNull(contractsList);
+	}
+
+	@Test
+	void testDeleteContract() {
+		boolean deleteCheck = contractDao.deleteContract(8756);
+		assertEquals(deleteCheck, true);
+	}
+
+	@Test
+	void testInsertContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractLogin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+}

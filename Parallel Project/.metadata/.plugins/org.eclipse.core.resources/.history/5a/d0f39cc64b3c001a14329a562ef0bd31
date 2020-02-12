@@ -1,0 +1,107 @@
+package com.cg.forestrymanagementspringboot.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.forestrymanagementspringboot.dto.ForestryResponse;
+import com.cg.forestrymanagementspringboot.dto.OrderBean;
+import com.cg.forestrymanagementspringboot.service.OrderService;
+
+@RestController
+@CrossOrigin(origins = "*",allowedHeaders = "*",allowCredentials = "true")
+public class OrderController {
+	@Autowired
+	OrderService service;
+
+	@PostMapping(path = "/add-order", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ForestryResponse addOrder(@RequestBody OrderBean order) {
+		ForestryResponse response = new ForestryResponse();
+		if (service.addOrder(order)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("order added");
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("order with same no already exists");
+		}
+		return response;
+	}
+
+	@DeleteMapping(path = "/delete-order/{orderNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ForestryResponse deleteContract(@PathVariable("orderNo") int orderNo) {
+		ForestryResponse response = new ForestryResponse();
+		if (service.deleteOrder(orderNo)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("order deleted");
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("order not found");
+		}
+		return response;
+	}
+
+	@GetMapping(path = "/view-order/{orderNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ForestryResponse viewOrder(@PathVariable("orderNo") int orderNo) {
+		ForestryResponse response = new ForestryResponse();
+		OrderBean order = service.getOrder(orderNo);
+		if (order != null) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Order found");
+			response.setOrder(Arrays.asList(order));
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Order No does not exist");
+		}
+		return response;
+	}
+
+	@GetMapping(path = "/view-allOrders", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ForestryResponse viewAllOrders() {
+		ForestryResponse response = new ForestryResponse();
+		List<OrderBean> list = service.getAllOrders();
+		if (list.size() != 0) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Contracts found");
+			response.setOrder(list);
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("No data");
+		}
+		return response;
+
+	}
+
+	@PutMapping(path = "/update-order/{orderNo}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ForestryResponse updateOrder(@PathVariable("orderNo") String orderNo,@RequestBody OrderBean bean) {
+		ForestryResponse response = new ForestryResponse();
+		if (service.updateOrder(orderNo,bean)) {
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Order updated");
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Order  is not updated");
+		}
+		return response;
+	}
+
+}

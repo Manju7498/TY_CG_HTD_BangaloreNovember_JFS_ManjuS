@@ -1,0 +1,14 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class HaulierDaoImplTest2 {
+
+	@Test
+	void testInsertHaulier() {
+		fail("Not yet implemented");
+	}
+
+}

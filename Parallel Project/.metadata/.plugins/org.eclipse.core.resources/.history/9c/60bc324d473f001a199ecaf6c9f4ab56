@@ -1,0 +1,57 @@
+package com.cg.forestrymanagementjpa.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementjpa.bean.HaulierBean;
+
+class HaulierDaoImplTest {
+	private HaulierBean haulierBean;
+	public static HaulierDao haulierDao = new HaulierDaoImpl();
+//	@Test
+//	void testInsertHaulier() {
+//		haulierBean=new HaulierBean();
+//		haulierBean.setHaulierId(9865);
+//		haulierBean.setHaulierName("priya");
+//		haulierBean.setStreetAddress1("hg");
+//		haulierBean.setStreetAddress2("uygh");
+//		haulierBean.setTown("jhg");
+//		haulierBean.setPincode(565241);
+//		haulierBean.setEmail("priya@gmail.com");
+//		haulierBean.setPhoneNumber(9550316616l);
+//		boolean check=haulierDao.insertHaulier(haulierBean);
+//		assertEquals(check, false);
+//	}
+
+	@Test
+	void testGetAllHauliers() {
+		List<HaulierBean> hauliersList = haulierDao.getAllHauliers();
+		assertNotNull(hauliersList);
+	}
+
+	@Test
+	void testDeleteHaulier() {
+		boolean deleteCheck = haulierDao.deleteHaulier(5778);
+		assertEquals(deleteCheck, false);
+	}
+
+	@Test
+	void testHaulierLogin() {
+		HaulierBean haulier = haulierDao.haulierLogin(1);
+		assertNotNull(haulier);
+	}
+
+	@Test
+	void testUpdateHaulier() {
+		haulierBean = new HaulierBean();
+		haulierBean.setHaulierName("syamala");
+		haulierBean.setEmail("syamala@gmail.com");
+		boolean updateCheck = haulierDao.updateHaulier(1, haulierBean);
+		assertEquals(updateCheck, true);
+	}
+
+}

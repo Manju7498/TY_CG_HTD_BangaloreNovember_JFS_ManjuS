@@ -1,0 +1,82 @@
+package com.cg.forestrymanagementspringboot.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.cg.forestrymanagementspringboot.dto.ProductBean;
+import com.cg.forestrymanagementspringboot.dto.UserBean;
+
+@Repository
+public class UserDaoImpl implements UserDao {
+	@PersistenceUnit
+	EntityManagerFactory factory;
+
+	@Override
+	public UserBean login(UserBean bean) {
+		EntityManager entityManager = factory.createEntityManager();
+		String jpql = "from AdminBean where email=:email";
+		TypedQuery<UserBean> query = entityManager.createQuery(jpql, UserBean.class);
+		query.setParameter("email", bean.getEmail());
+		try {
+			UserBean bean1 = query.getSingleResult();
+			if (bean.getPassword().equals(bean.getPassword())) {
+				return bean;
+			} else {
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return null;
+	}
+
+	@Override
+	public boolean register(UserBean bean) {
+		EntityManager entityManager = factory.createEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		try {
+			entityManager.persist(bean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+	@Override
+	public List<UserBean> getAllUsers() {
+		try {
+		EntityManager manager = factory.createEntityManager();
+		String getall = "from UserBean";
+		TypedQuery<UserBean> query = manager.createQuery(getall, UserBean.class);
+		return query.getResultList();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return null;
+	}
+
+	@Override
+	public boolean deleteUser(String email) { 
+		try {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		UserBean user = manager.find(UserBean.class, email);
+		if (user != null) {
+			transaction.begin();
+			manager.remove(user);
+			transaction.commit();
+			return true;
+		} } catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+}

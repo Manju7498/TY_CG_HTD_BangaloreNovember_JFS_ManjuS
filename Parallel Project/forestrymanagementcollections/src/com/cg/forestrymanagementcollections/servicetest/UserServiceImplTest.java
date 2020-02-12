@@ -1,0 +1,46 @@
+package com.cg.forestrymanagementcollections.servicetest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cg.forestrymanagementcollections.bean.UserBean;
+import com.cg.forestrymanagementcollections.service.UserService;
+import com.cg.forestrymanagementcollections.service.UserServiceImpl;
+
+
+class UserServiceImplTest {
+
+	private UserBean userBean=new UserBean();
+	private UserService userService=new UserServiceImpl();
+	@BeforeEach
+	void addUser() {
+			userBean.setEmail("manju@gmail.com");
+			userBean.setPassword("Manju@518");
+			userBean.setRole("client");
+			userService.addUser("manju@gmail.com",userBean );
+		}
+
+	@Test
+	void testAddUser() {
+		userBean.setEmail("syamala@gmail.com");
+		userBean.setPassword("Syamala@123");
+		userBean.setRole("sceduler");
+		boolean check=userService.addUser("syamala@gmail.com",userBean );
+		assertEquals(check, true);
+	}
+
+	@Test
+	void testLogin() {
+		boolean check=userService.login(userBean);
+		assertEquals(check,true);	
+	}
+
+	@Test
+	void testDeleteUser() {
+		boolean result = userService.deleteUser("manju@gmail.com");
+		assertEquals(result, true);
+	}
+
+}

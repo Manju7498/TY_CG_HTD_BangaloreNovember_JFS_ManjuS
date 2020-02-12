@@ -1,0 +1,73 @@
+package com.cg.forestrymanagementjpa.bean;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Orders")
+public class OrderBean {
+	@Id
+	@Column
+	private int orderNo;
+	@Column
+	private int customerId;
+	@Column
+	private int haulierId;
+	@Column
+	private int productId;
+//	@ManyToOne
+//	@JoinColumn(name="customerId")
+//	private CustomerBean customerBean;
+//	@ManyToOne
+//	@JoinColumn(name="haulierId")
+//	private HaulierBean haulierBean;
+//	@OneToOne
+//	@JoinColumn(name="productId")
+//	private ProductBean productBean;
+	@Column
+	private String deliveryDate;
+	@Column
+	private int quantity;
+	public int getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
+	public CustomerBean getCustomer() {
+		return customerBean;
+	}
+	public void setCustomer(CustomerBean customer) {
+		this.customerBean = customer;
+	}
+	public HaulierBean getHaulier() {
+		return haulierBean;
+	}
+	public void setHaulier(HaulierBean haulier) {
+		this.haulierBean = haulier;
+	}
+	public ProductBean getProduct() {
+		return productBean;
+	}
+	public void setProduct(ProductBean product) {
+		this.productBean = product;
+	}
+	public String getDeliveryDate() {
+		return deliveryDate;
+	}
+	public void setDeliveryDate(String deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+}

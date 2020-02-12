@@ -1,0 +1,68 @@
+package com.cg.forestrymanagementspringboot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.forestrymanagementspringboot.dao.CustomerDao;
+import com.cg.forestrymanagementspringboot.dto.CustomerBean;
+import com.cg.forestrymanagementspringboot.validations.Validations;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+	@Autowired
+	private CustomerDao dao;
+	Validations validations = new Validations();
+
+	@Override
+	public boolean addCustomer(CustomerBean customer) {
+		if (validations.idValidation(customer.getCustomerId()) && validations.nameValidation(customer.getCustomerName())
+				&& validations.addressValidation(customer.getStreetAddress1())
+				&& validations.addressValidation(customer.getStreetAddress2())
+				&& validations.nameValidation(customer.getPincode())
+				&& validations.pincodeValidation(customer.getPincode())
+				&& validations.emailValidation(customer.getEmail())
+				&& validations.phoneNumberValidation(customer.getCustomerPhoneNumber())) {
+			return dao.addCustomer(customer);
+		} else {
+			System.err.println("Please enter valid information");
+		}
+		return false;
+	}
+
+	@Override
+	public CustomerBean getCustomer(int customerId) {
+		// TODO Auto-generated method stub
+		return dao.getCustomer(customerId);
+	}
+
+	@Override
+	public List<CustomerBean> getAllCustomers() {
+		// TODO Auto-generated method stub
+		return dao.getAllCustomers();
+	}
+
+	@Override
+	public boolean deleteCustomer(int customerId) {
+		// TODO Auto-generated method stub
+		return dao.deleteCustomer(customerId);
+	}
+
+	@Override
+	public boolean updateCustomer(String customerId,CustomerBean customer) {
+		if (validations.idValidation(customer.getCustomerId()) && validations.nameValidation(customer.getCustomerName())
+				&& validations.nameValidation(customer.getStreetAddress1())
+				&& validations.nameValidation(customer.getStreetAddress2())
+				&& validations.nameValidation(customer.getPincode())
+				&& validations.pincodeValidation(customer.getPincode())
+				&& validations.emailValidation(customer.getEmail())
+				&& validations.phoneNumberValidation(customer.getCustomerPhoneNumber())) {
+			return dao.updateCustomer(customerId,customer);
+		} else {
+			System.err.println("Please enter valid information");
+		}
+		return false;
+	}
+
+}
